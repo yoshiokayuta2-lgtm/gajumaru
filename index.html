@@ -97,7 +97,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 .ai-quick-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.ai-quick{border:1px solid #9ec48d;background:#fff;color:var(--green);border-radius:13px;padding:10px 5px;font-weight:900;font-size:12px}.ai-quick:active{transform:scale(.97)}.support-card{cursor:default}.support-try{width:100%;margin-top:9px;border:0;border-radius:11px;background:var(--green);color:#fff;padding:9px 6px;font-size:11px;font-weight:900}.support-try:active{transform:scale(.97)}
 </style></head><body>
 <div class="app">
-<header class="topbar"><div class="brandline"><div class="brand">GAJUまる<small>○をつけると、育つ。 v8</small></div><div class="streak" id="streakChip">🔥 0日</div></div></header>
+<header class="topbar"><div class="brandline"><div class="brand">GAJUまる<small>○をつけると、育つ。 v9</small></div><div class="streak" id="streakChip">🔥 0日</div></div></header>
 <main>
 <section class="page active" data-page="today"><div class="eyebrow">TODAY</div><h1 class="title" id="helloTitle">今日も○をつけよう。</h1><p class="subtitle">筋トレ・有酸素・休養のバランスを見ながら、GAJUまるをふたりで育てていく。</p><div class="card hero"><div class="hero-head"><div class="hero-copy"><span class="pill">🌱 GAJUまる Lv.<span id="levelNumInline">1</span></span><h2 id="gajuMessage">今日はここから。小さな○でも育つよ。</h2><p>毎日の積み重ねで、葉っぱも表情も少しずつ変わる。がんばり過ぎないのがコツ。</p><div class="hero-meter"><span class="level" id="levelPill">Lv.1 はじめの芽</span><div class="meter"><i id="growthBar" style="width:0%"></i></div><span class="level" id="nextText">次まで 3○</span></div></div><div class="gaju-wrap" id="gajuWrap"><img class="gaju-img" id="gajuImage" alt="GAJUまる"><span class="bug b1">🐛</span><span class="bug b2">🪲</span><span class="bug b3">🐜</span><span class="leaf-hole hole1"></span><span class="leaf-hole hole2"></span><span class="leaf-hole hole3"></span></div></div><div class="warning" style="margin-top:12px"><strong id="damageTitle">さぼっても大丈夫。</strong><br><span id="damageText">続けると元気に戻るよ。</span></div></div><div class="card companion-card"><div class="companion-copy"><span class="pill timepill" id="reminderPill">🔔 20分前</span><strong id="companionTitle">今日は筋トレの日</strong><p id="companionText">短くても1つ○をつければOK。ふたりが応援、GAJUまるが成長。</p><button class="primary start-workout" id="startWorkoutBtn">トレーニング開始</button></div><div class="companion-scene"><img class="couple" id="coupleToday" alt="応援するふたり"><img class="buddy" id="gajuBuddy" alt="小さなGAJUまる"></div></div><div class="card ai-card"><div class="ai-card-head"><div class="ai-badge">AI</div><div class="ai-card-copy"><b>AIフォームチェック β</b><span>家トレ3種目に対応</span></div></div><p>カメラで姿勢を見て、回数カウントと簡単なフォーム判定をサポート。試したい種目を選んでください。</p><div class="ai-quick-row"><button class="ai-quick" data-ai-exercise="pushup">腕立て</button><button class="ai-quick" data-ai-exercise="squat">スクワット</button><button class="ai-quick" data-ai-exercise="plank">プランク</button></div></div><div class="section-title"><h3>AIフォームチェック対応種目</h3><span>それぞれ「試す」から開始</span></div><div class="support-grid"><div class="support-card"><img src="asset-ai-workout.png" alt="腕立て伏せのAI画面"><div class="support-copy"><b>腕立て伏せ</b><span>回数カウント</span><button class="support-try" data-ai-exercise="pushup">腕立てを試す</button></div></div><div class="support-card"><img src="asset-ai-tracker.png" alt="フォームチェック画面"><div class="support-copy"><b>スクワット</b><span>回数＋深さ判定</span><button class="support-try" data-ai-exercise="squat">スクワットを試す</button></div></div><div class="support-card"><img src="asset-ai-pushup-guide.png" alt="プランクのAI画面"><div class="support-copy"><b>プランク</b><span>正しい姿勢の秒数</span><button class="support-try" data-ai-exercise="plank">プランクを試す</button></div></div></div><div class="section-title"><h3>主な機能</h3><span>習慣化しやすい設計</span></div><div class="feature-grid"><div class="feature-item"><div class="feature-icon">📅</div><div><b>週間プラン</b><span>曜日ごとにジム・自宅・有酸素を設定。</span></div></div><div class="feature-item"><div class="feature-icon">📈</div><div><b>記録とグラフ</b><span>体重やトレーニング回数を見える化。</span></div></div><div class="feature-item"><div class="feature-icon">🔔</div><div><b>リマインド</b><span>「あと20分だけ」の後押し通知。</span></div></div><div class="feature-item"><div class="feature-icon">🚴</div><div><b>有酸素にロードバイク</b><span>GAJUまるらしい楽しさも忘れない。</span></div></div></div><div class="section-title"><h3>今週の○</h3><span>できた日に○が増える</span></div><div class="card"><div class="record-flex"><div class="progress-ring" id="weekRing" style="--p:0%"><b id="weekScore">0/0</b></div><div><b id="weekComment">今週はここから。</b><p class="note" id="weekSub">筋トレ・有酸素・休養をバランスよく。</p></div></div></div></section>
 
@@ -333,7 +333,7 @@ function setPoseFeedback(text,icon='✨'){
  const ic=$('#poseFeedbackIcon');if(ic)ic.textContent=icon;
 }
 function exerciseFromName(name=''){if(/スクワット/.test(name))return 'squat';if(/プランク/.test(name))return 'plank';return 'pushup'}
-function poseConfig(ex=poseExercise){return ex==='squat'?{title:'スクワット',goal:10,unit:'回',m1:'膝の角度',m2:'上体ライン',hint:'スマホは縦のまま、正面〜少し斜め前から全身を入れてください'}:ex==='plank'?{title:'プランク',goal:30,unit:'秒',m1:'体の角度',m2:'キープ時間',hint:'スマホは縦のまま、正面〜斜め前から肩・腰・膝が入るように置いてください'}:{title:'腕立て伏せ',goal:10,unit:'回',m1:'肘の角度',m2:'体のライン',hint:'スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください'}}
+function poseConfig(ex=poseExercise){return ex==='squat'?{title:'スクワット',goal:10,unit:'回',m1:'しゃがみ深さ',m2:'上体バランス',hint:'スマホは縦のまま。肩・腰・膝が映ればOK。足首は映らなくても大丈夫です'}:ex==='plank'?{title:'プランク',goal:30,unit:'秒',m1:'体の角度',m2:'キープ時間',hint:'スマホは縦のまま、正面〜斜め前から肩・腰・膝が入るように置いてください'}:{title:'腕立て伏せ',goal:10,unit:'回',m1:'肘の角度',m2:'体のライン',hint:'スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください'}}
 function resetPoseCounter(){
  poseCount=0;posePhase='wait';poseLastRepAt=0;poseGoalReached=false;poseGoodMs=0;poseLastProcessAt=0;
  $('#poseCount').textContent='0';$('#posePhase').textContent='WAIT';$('#poseApplyBtn').disabled=true;
@@ -481,11 +481,49 @@ function processPushup(lms,world){
 }
 
 function processSquat(lms,world){
- const pairs=[[23,25,27],[24,26,28]],angles=[];for(const ids of pairs){const vis=ids.map(i=>lmVis(lms[i]));if(Math.min(...vis)<.35)continue;const a=world?angle3D(world[ids[0]],world[ids[1]],world[ids[2]]):angle3(lms[ids[0]],lms[ids[1]],lms[ids[2]]);if(Number.isFinite(a))angles.push(a)}
- if(!angles.length){$('#posePhase').textContent='WAIT';setPoseFeedback('腰・膝・足首が見えるように少し離れてね','📷');return}
- const knee=angles.reduce((a,b)=>a+b,0)/angles.length;let torso=NaN;if(world){const sh=mid3(world[11],world[12]),hip=mid3(world[23],world[24]),kneeMid=mid3(world[25],world[26]);torso=angle3D(sh,hip,kneeMid)}
- $('#poseElbow').textContent=Math.round(knee)+'°';$('#poseBody').textContent=Number.isFinite(torso)?Math.round(torso)+'°':'--°';
- const now=performance.now();if(knee<105){if(posePhase==='up'||posePhase==='wait'||posePhase==='move')posePhase='down';$('#posePhase').textContent='DOWN';setPoseFeedback('いい深さ！ かかとを意識して立とう','⬇️')}else if(knee>155){if(posePhase==='down'&&now-poseLastRepAt>550){poseCount++;poseLastRepAt=now;$('#poseCount').textContent=poseCount;if(navigator.vibrate)navigator.vibrate(35)}posePhase='up';$('#posePhase').textContent='UP';setPoseFeedback(poseCount?`${poseCount}回！ 安定してるよ🌱`:'その姿勢からスタート！','⬆️')}else{posePhase='move';$('#posePhase').textContent='MOVE';setPoseFeedback('膝とつま先の向きをそろえて、ゆっくりしゃがもう','✨')}
+ // v9: 足首は必須にしない。肩・腰・膝の3点と腰の上下動で判定する。
+ const shoulderOk=Math.max(lmVis(lms[11]),lmVis(lms[12]))>.35;
+ const hipOk=Math.max(lmVis(lms[23]),lmVis(lms[24]))>.35;
+ const kneeOk=Math.max(lmVis(lms[25]),lmVis(lms[26]))>.35;
+ if(!shoulderOk||!hipOk||!kneeOk){
+  $('#posePhase').textContent='WAIT';
+  setPoseFeedback('肩・腰・膝が映るように少し離れてね。足首は映らなくてOK！','📷');return;
+ }
+ const shoulder2=mid3(lms[11],lms[12]),hip2=mid3(lms[23],lms[24]),knee2=mid3(lms[25],lms[26]);
+ const shoulderW=world?mid3(world[11],world[12]):null,hipW=world?mid3(world[23],world[24]):null,kneeW=world?mid3(world[25],world[26]):null;
+ // 肩-腰-膝の角度。立位では大きく、しゃがむと小さくなる。
+ const hipAngle=(shoulderW&&hipW&&kneeW)?angle3D(shoulderW,hipW,kneeW):angle3(shoulder2,hip2,knee2);
+ // 画像内で腰が膝にどれだけ近づいたかを正規化。カメラ距離の影響を減らす。
+ const torsoLen=Math.max(.03,Math.abs(hip2.y-shoulder2.y));
+ const hipKneeGap=Math.max(0,knee2.y-hip2.y);
+ const depthRatio=hipKneeGap/torsoLen;
+ // 上体の傾きも肩と腰だけで補助判定する。
+ const dx=Math.abs(shoulder2.x-hip2.x),dy=Math.max(.01,Math.abs(shoulder2.y-hip2.y));
+ const leanDeg=Math.atan2(dx,dy)*180/Math.PI;
+ const depthPct=Math.round(Math.max(0,Math.min(100,(1.15-depthRatio)/.85*100)));
+ $('#poseElbow').textContent=`${depthPct}%`;
+ $('#poseBody').textContent=`${Math.round(leanDeg)}°`;
+ const now=performance.now();
+ const isDown=(Number.isFinite(hipAngle)&&hipAngle<118)||depthRatio<.55;
+ const isUp=(Number.isFinite(hipAngle)&&hipAngle>150&&depthRatio>.82)||depthRatio>1.0;
+ if(leanDeg>42){
+  $('#posePhase').textContent='FORM';
+  setPoseFeedback('上体が前に倒れすぎかも。胸を少し起こしてみよう','🌱');return;
+ }
+ if(isDown){
+  if(posePhase==='up'||posePhase==='wait'||posePhase==='move')posePhase='down';
+  $('#posePhase').textContent='DOWN';
+  setPoseFeedback('いい深さ！ 足首は映ってなくても判定できてるよ','⬇️');
+ }else if(isUp){
+  if(posePhase==='down'&&now-poseLastRepAt>550){
+   poseCount++;poseLastRepAt=now;$('#poseCount').textContent=poseCount;if(navigator.vibrate)navigator.vibrate(35)
+  }
+  posePhase='up';$('#posePhase').textContent='UP';
+  setPoseFeedback(poseCount?`${poseCount}回！ 肩・腰・膝だけでちゃんと見えてる🌱`:'立った姿勢からスタート！','⬆️');
+ }else{
+  posePhase='move';$('#posePhase').textContent='MOVE';
+  setPoseFeedback('お尻を後ろに引く感じで、もう少しゆっくりしゃがもう','✨');
+ }
  finishPoseGoal('回');
 }
 function processPlank(lms,world,ts){
@@ -506,7 +544,7 @@ function poseLoop(ts){
    if(lms){drawPose(lms);if(poseExercise==='squat')processSquat(lms,world);else if(poseExercise==='plank')processPlank(lms,world,ts);else processPushup(lms,world)}
    else{
     const c=$('#poseCanvas');c?.getContext('2d')?.clearRect(0,0,c.width,c.height);
-    $('#posePhase').textContent='WAIT';setPoseFeedback('人が見つからないよ。縦のまま少し離れて、上半身〜膝を入れてね','📷');
+    $('#posePhase').textContent='WAIT';const c=poseConfig();setPoseFeedback(poseExercise==='squat'?'人が見つからないよ。肩・腰・膝が入るように少し離れてね。足首は不要！':c.hint,'📷');
    }
   }catch(e){console.warn(e)}
  }
