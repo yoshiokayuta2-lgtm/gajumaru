@@ -29,7 +29,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 @media(max-width:380px){.companion-card{grid-template-columns:1fr}.companion-scene{min-height:118px}.companion-scene .couple{max-height:118px}.companion-scene .buddy{max-height:92px}.workout-counter{font-size:38px}}
 
 
-/* v3: AI pose check beta */
+/* v4: portrait/front-view AI pose check beta */
 .ai-card{background:linear-gradient(145deg,#eef8ec,#fff8de);border-color:#cfe1bd;position:relative;overflow:hidden}
 .ai-card:after{content:'AI';position:absolute;right:-8px;top:-14px;font-weight:950;font-size:72px;color:rgba(47,125,61,.055);transform:rotate(8deg)}
 .ai-card-head{display:flex;align-items:center;gap:10px}
@@ -42,9 +42,16 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 .pose-header{display:grid;grid-template-columns:42px 1fr 42px;align-items:center;gap:8px;margin-bottom:10px}
 .pose-header button{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;font-size:20px;color:var(--ink)}
 .pose-header div{text-align:center}.pose-header b{display:block;font-size:15px}.pose-header small{font-size:10px;color:var(--muted)}
-.pose-stage{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#1f2820;box-shadow:var(--shadow)}
-.pose-stage video,.pose-stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.pose-stage{position:relative;height:min(39svh,360px);min-height:220px;border-radius:22px;overflow:hidden;background:#1f2820;box-shadow:var(--shadow)}
+.pose-stage video,.pose-stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scaleX(-1)}
 .pose-stage canvas{pointer-events:none}
+@media (orientation:portrait){
+ .pose-sheet{height:96svh;max-height:96svh;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+ .pose-stage{height:min(36svh,340px);min-height:210px}
+ .pose-count-card{margin-top:8px}
+ .pose-feedback{margin-top:7px}
+ .pose-actions{margin-top:8px}
+}
 .pose-hud{position:absolute;z-index:4;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .pose-status{background:rgba(18,31,20,.78);color:#fff;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:800;backdrop-filter:blur(8px)}
 .pose-live{background:#eaf7e5;color:var(--green);border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900}
@@ -94,7 +101,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 <div class="modal" id="poseModal"><div class="sheet pose-sheet">
   <div class="pose-header">
     <button id="closePoseBtn" aria-label="閉じる">×</button>
-    <div><b>AIフォームチェック β</b><small>腕立て伏せ・横から全身を入れる</small></div>
+    <div><b>AIフォームチェック β</b><small>スマホは縦のまま・正面〜斜め前でOK</small></div>
     <button id="poseFlipBtn" aria-label="カメラを切替">⇄</button>
   </div>
   <div class="pose-stage">
@@ -105,7 +112,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
     <div><strong id="poseTitle">腕立て伏せ</strong><small id="poseGoalText">目標 10回</small></div>
     <div class="pose-count"><span id="poseCount">0</span><em> / <span id="poseGoal">10</span>回</em></div>
   </div>
-  <div class="pose-feedback"><i id="poseFeedbackIcon">📷</i><span id="poseFeedback">スマホを横向きに置いて、横から全身を入れてください</span></div>
+  <div class="pose-feedback"><i id="poseFeedbackIcon">📷</i><span id="poseFeedback">スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください</span></div>
   <div class="pose-metrics">
     <div class="pose-metric"><b id="poseElbow">--°</b><span>肘の角度</span></div>
     <div class="pose-metric"><b id="poseBody">--°</b><span>体のライン</span></div>
@@ -285,6 +292,18 @@ function angle3(a,b,c){
  if(!den)return NaN;
  return Math.acos(Math.max(-1,Math.min(1,dot/den)))*180/Math.PI;
 }
+function angle3D(a,b,c){
+ if(!a||!b||!c)return NaN;
+ const ab={x:a.x-b.x,y:a.y-b.y,z:(a.z||0)-(b.z||0)},cb={x:c.x-b.x,y:c.y-b.y,z:(c.z||0)-(b.z||0)};
+ const dot=ab.x*cb.x+ab.y*cb.y+ab.z*cb.z;
+ const den=Math.hypot(ab.x,ab.y,ab.z)*Math.hypot(cb.x,cb.y,cb.z);
+ if(!den)return NaN;
+ return Math.acos(Math.max(-1,Math.min(1,dot/den)))*180/Math.PI;
+}
+function mid3(a,b){
+ if(!a||!b)return null;
+ return {x:(a.x+b.x)/2,y:(a.y+b.y)/2,z:((a.z||0)+(b.z||0))/2};
+}
 function lmVis(p){return p?.visibility??p?.presence??1}
 function sideScore(lms,ids){return ids.reduce((s,i)=>s+lmVis(lms[i]),0)/ids.length}
 function setPoseFeedback(text,icon='✨'){
@@ -295,7 +314,7 @@ function resetPoseCounter(){
  poseCount=0;posePhase='wait';poseLastRepAt=0;poseGoalReached=false;
  $('#poseCount').textContent='0';$('#posePhase').textContent='WAIT';$('#poseApplyBtn').disabled=true;
  $('#poseElbow').textContent='--°';$('#poseBody').textContent='--°';
- setPoseFeedback('スマホを横向きに置いて、横から全身を入れてください','📷');
+ setPoseFeedback('スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください','📷');
 }
 function openPoseCheck(source='demo'){
  poseSource=source;poseGoal=10;
@@ -303,7 +322,7 @@ function openPoseCheck(source='demo'){
   const info=workoutTaskInfo();poseGoal=parseInt(info?.count,10)||10;
  }
  $('#poseGoal').textContent=poseGoal;
- $('#poseGoalText').textContent=`目標 ${poseGoal}回・横向きで判定`;
+ $('#poseGoalText').textContent=`目標 ${poseGoal}回・縦持ち対応`;
  $('#poseTitle').textContent=source==='workout'?workoutTaskInfo().name:'腕立て伏せ';
  resetPoseCounter();
  $('#poseModal').classList.add('open');
@@ -335,12 +354,12 @@ async function startPoseCamera(){
   if(poseStream)stopPoseStream();
   poseStream=await navigator.mediaDevices.getUserMedia({
    audio:false,
-   video:{facingMode:poseFacing,width:{ideal:1280},height:{ideal:720}}
+   video:{facingMode:poseFacing,width:{ideal:720},height:{ideal:1280},aspectRatio:{ideal:.75}}
   });
   const video=$('#poseVideo');video.srcObject=poseStream;await video.play();
   await ensurePoseLandmarker();
   poseActive=true;poseLastVideoTime=-1;poseLastInfer=0;
-  $('#poseLive').textContent='AI 計測中';$('#poseStatus').textContent='横向きで全身を入れてね';
+  $('#poseLive').textContent='AI 計測中';$('#poseStatus').textContent='縦のままでOK・正面〜斜め前から';
   $('#poseStopBtn').disabled=false;
   poseRaf=requestAnimationFrame(poseLoop);
  }catch(err){
@@ -374,42 +393,63 @@ function drawPose(lms){
   ctx.beginPath();ctx.arc(p.x*canvas.width,p.y*canvas.height,Math.max(4,canvas.width/120),0,Math.PI*2);ctx.fill();
  });
 }
-function processPushup(lms){
- const leftIds=[11,13,15,23,25,27],rightIds=[12,14,16,24,26,28];
- const left=sideScore(lms,leftIds)>=sideScore(lms,rightIds),ids=left?leftIds:rightIds;
- const [s,e,w,h,k,a]=ids.map(i=>lms[i]);
- const minVis=Math.min(...[s,e,w,h,k].map(lmVis));
- if(minVis<.45){
+function processPushup(lms,world){
+ const leftIds=[11,13,15,23,25],rightIds=[12,14,16,24,26];
+ const leftScore=sideScore(lms,leftIds),rightScore=sideScore(lms,rightIds);
+ const l=[11,13,15,23,25].map(i=>lms[i]),r=[12,14,16,24,26].map(i=>lms[i]);
+ const lw=world?[11,13,15,23,25].map(i=>world[i]):null,rw=world?[12,14,16,24,26].map(i=>world[i]):null;
+
+ // 3D world landmarks let us judge elbow flexion even when the phone stays portrait
+ // and the person is facing the camera or standing at a slight diagonal.
+ let leftElbow=lw?angle3D(lw[0],lw[1],lw[2]):angle3(l[0],l[1],l[2]);
+ let rightElbow=rw?angle3D(rw[0],rw[1],rw[2]):angle3(r[0],r[1],r[2]);
+ const elbowCandidates=[];
+ if(leftScore>.42&&Number.isFinite(leftElbow))elbowCandidates.push({v:leftElbow,w:leftScore});
+ if(rightScore>.42&&Number.isFinite(rightElbow))elbowCandidates.push({v:rightElbow,w:rightScore});
+ if(!elbowCandidates.length){
   $('#posePhase').textContent='WAIT';
-  setPoseFeedback('肩・肘・手首・腰・脚が入るように一歩離れてね','📷');return;
+  setPoseFeedback('肩・肘・手首が見える位置にスマホを置いてね','📷');return;
  }
- const end=lmVis(a)>.42?a:k,elbow=angle3(s,e,w),body=angle3(s,h,end);
- const dx=Math.abs(s.x-end.x),dy=Math.abs(s.y-end.y),sideOn=dx>dy*1.15;
+ const elbow=elbowCandidates.reduce((s,x)=>s+x.v*x.w,0)/elbowCandidates.reduce((s,x)=>s+x.w,0);
+
+ const enoughBody=Math.max(lmVis(lms[23]),lmVis(lms[24]))>.35&&Math.max(lmVis(lms[25]),lmVis(lms[26]))>.30;
+ let body=NaN;
+ if(world&&enoughBody){
+  const shoulder=mid3(world[11],world[12]),hip=mid3(world[23],world[24]),knee=mid3(world[25],world[26]);
+  body=angle3D(shoulder,hip,knee);
+ }else{
+  const useLeft=leftScore>=rightScore;
+  const arr=useLeft?l:r;
+  body=angle3(arr[0],arr[3],arr[4]);
+ }
+
  $('#poseElbow').textContent=Number.isFinite(elbow)?Math.round(elbow)+'°':'--°';
  $('#poseBody').textContent=Number.isFinite(body)?Math.round(body)+'°':'--°';
- if(!sideOn){
+
+ if(!enoughBody){
   $('#posePhase').textContent='WAIT';
-  setPoseFeedback('横向きになって、頭から足まで入れてね','⇄');return;
+  setPoseFeedback('上半身と腰・膝まで入るように少し離れてね','📷');return;
  }
- if(body<150){
+ if(Number.isFinite(body)&&body<142){
   $('#posePhase').textContent='FORM';
-  setPoseFeedback('腰が折れているかも。頭からかかとまでまっすぐに','🌱');return;
+  setPoseFeedback('腰が折れているかも。頭〜膝を一直線に','🌱');return;
  }
+
  const now=performance.now();
- if(elbow<100){
-  if(posePhase==='up'||posePhase==='wait')posePhase='down';
+ if(elbow<105){
+  if(posePhase==='up'||posePhase==='wait'||posePhase==='move')posePhase='down';
   $('#posePhase').textContent='DOWN';
-  setPoseFeedback('いい深さ！ そのまま上がろう','⬇️');
- }else if(elbow>155){
-  if(posePhase==='down'&&now-poseLastRepAt>450){
+  setPoseFeedback('いい深さ！ そのまま押し上げよう','⬇️');
+ }else if(elbow>150){
+  if(posePhase==='down'&&now-poseLastRepAt>500){
    poseCount++;poseLastRepAt=now;$('#poseCount').textContent=poseCount;
    if(navigator.vibrate)navigator.vibrate(35);
   }
   posePhase='up';$('#posePhase').textContent='UP';
-  setPoseFeedback(poseCount?`${poseCount}回！ いいフォーム🌱`:'その姿勢からスタート！','⬆️');
+  setPoseFeedback(poseCount?`${poseCount}回！ 正面からでも見えてるよ🌱`:'その姿勢からスタート！','⬆️');
  }else{
-  $('#posePhase').textContent='MOVE';
-  setPoseFeedback('胸を床に近づけて、もう少し下へ','✨');
+  posePhase='move';$('#posePhase').textContent='MOVE';
+  setPoseFeedback('そのままゆっくり上下してね','✨');
  }
  if(poseCount>=poseGoal){
   $('#poseApplyBtn').disabled=false;
@@ -426,11 +466,11 @@ function poseLoop(ts){
  if(video?.readyState>=2&&poseLandmarker&&ts-poseLastInfer>75&&video.currentTime!==poseLastVideoTime){
   poseLastInfer=ts;poseLastVideoTime=video.currentTime;
   try{
-   const result=poseLandmarker.detectForVideo(video,ts),lms=result?.landmarks?.[0];
-   if(lms){drawPose(lms);processPushup(lms)}
+   const result=poseLandmarker.detectForVideo(video,ts),lms=result?.landmarks?.[0],world=result?.worldLandmarks?.[0];
+   if(lms){drawPose(lms);processPushup(lms,world)}
    else{
     const c=$('#poseCanvas');c?.getContext('2d')?.clearRect(0,0,c.width,c.height);
-    $('#posePhase').textContent='WAIT';setPoseFeedback('人が見つからないよ。もう少し離れて全身を入れてね','📷');
+    $('#posePhase').textContent='WAIT';setPoseFeedback('人が見つからないよ。縦のまま少し離れて、上半身〜膝を入れてね','📷');
    }
   }catch(e){console.warn(e)}
  }
