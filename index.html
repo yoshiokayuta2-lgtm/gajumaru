@@ -69,7 +69,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 
 .design-strip{display:grid;gap:10px}
 .support-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.support-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
+.support-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:8px;box-shadow:var(--shadow);text-align:left;color:var(--ink);cursor:pointer}.support-card:active{transform:scale(.98)}
 .support-card img{width:100%;aspect-ratio:1/1;border-radius:14px;object-fit:cover;background:#eef3e7}
 .support-copy{padding:8px 2px 2px}.support-copy b{display:block;font-size:13px;line-height:1.3}.support-copy span{font-size:11px;color:var(--muted)}
 .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.feature-item{background:#fbfbf1;border:1px solid var(--line);border-radius:18px;padding:12px;display:flex;gap:10px;align-items:flex-start}.feature-icon{width:42px;height:42px;border-radius:14px;background:#eef6e8;display:grid;place-items:center;font-size:22px;flex:0 0 auto}.feature-item b{display:block;font-size:13px;line-height:1.25}.feature-item span{display:block;font-size:11px;color:var(--muted);line-height:1.45;margin-top:4px}
@@ -80,15 +80,28 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 .skill-chip-row{display:flex;gap:8px;overflow:auto;padding-bottom:3px}.skill-chip{min-width:150px;padding:12px 14px;border-radius:16px;background:#f8faf1;border:1px solid var(--line)}.skill-chip b{display:block;font-size:13px}.skill-chip span{font-size:11px;color:var(--muted);line-height:1.45}
 @media(max-width:380px){.support-grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.preview-highlight,.profile-summary{grid-template-columns:1fr}}
 
+
+/* v6: easier plan setup + coherent temporary GAJU visuals */
+.plan-mode{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 14px}.plan-mode button{border:1px solid var(--line);background:#fff;border-radius:15px;padding:11px 8px;font-weight:900;color:var(--muted)}.plan-mode button.active{background:#edf6e7;color:var(--green);border:2px solid var(--green)}
+.bulk-box,.interval-box{background:#f7faef;border:1px solid var(--line);border-radius:20px;padding:13px;margin-bottom:12px}.bulk-box h3,.interval-box h3{margin:0 0 5px;font-size:15px}.bulk-box p,.interval-box p{margin:0 0 10px;font-size:11px;color:var(--muted);line-height:1.5}
+.quick-days{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 10px}.quick-days button{border:1px solid #d9e3cf;background:#fff;border-radius:999px;padding:7px 9px;font-size:11px;font-weight:800;color:var(--green)}
+.day-picks{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:10px}.day-pick{border:1px solid #dbe4d2;background:#fff;border-radius:12px;padding:9px 2px;font-size:11px;font-weight:900;color:var(--muted)}.day-pick.on{background:var(--green);color:#fff;border-color:var(--green)}
+.bulk-form{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bulk-form .full{grid-column:1/-1}.bulk-form label{display:block;font-size:10px;font-weight:800;color:var(--muted);margin-bottom:4px}.bulk-form input,.bulk-form select{width:100%;border:1px solid #d8e0ce;border-radius:12px;background:#fff;padding:10px 9px;font-size:12px}.bulk-apply{width:100%;margin-top:9px}
+.interval-form{display:grid;grid-template-columns:1fr 1fr;gap:8px}.interval-form .full{grid-column:1/-1}.interval-form label{display:block;font-size:10px;font-weight:800;color:var(--muted);margin-bottom:4px}.interval-form input,.interval-form select{width:100%;border:1px solid #d8e0ce;border-radius:12px;background:#fff;padding:10px 9px;font-size:12px}.interval-summary{margin-top:9px;padding:10px;border-radius:13px;background:#fff;border:1px solid #dfe7d6;font-size:11px;color:var(--muted);line-height:1.55}.advanced-toggle{width:100%;border:0;background:transparent;color:var(--green);font-weight:900;padding:9px}.advanced-wrap{display:none}.advanced-wrap.open{display:block}
+.schedule-line{grid-template-columns:36px 36px 1fr 76px 64px}.schedule-line input,.schedule-line select{font-size:10px}.schedule-editor{gap:7px}
+.plan-badge{display:inline-flex;align-items:center;gap:5px;padding:7px 10px;border-radius:999px;background:#edf6e8;color:var(--green);font-size:11px;font-weight:900;margin:0 0 10px}
+.gaju-img{transform:scale(var(--gaju-scale,1))}.gaju-wrap:hover .gaju-img{transform:translateY(-3px) rotate(-1deg) scale(var(--gaju-scale,1))}.growth-card .gaju-demo-img{width:100%;height:130px;object-fit:contain;transform:scale(var(--demo-scale,1));filter:drop-shadow(0 7px 6px rgba(80,70,45,.10))}.growth-card.locked .gaju-demo-img{filter:grayscale(1) opacity(.55)}.growth-preview img{width:100%;border-radius:18px;border:1px solid #e0e7d5}.growth-preview p{font-size:11px;color:var(--muted);line-height:1.55;margin:8px 2px 0}
+@media(max-width:380px){.bulk-form,.interval-form{grid-template-columns:1fr}.bulk-form .full,.interval-form .full{grid-column:auto}.schedule-line{grid-template-columns:32px 32px 1fr 68px 58px}.day-picks{gap:3px}.day-pick{padding:8px 0}}
+
 </style></head><body>
 <div class="app">
 <header class="topbar"><div class="brandline"><div class="brand">GAJUまる<small>○をつけると、育つ。</small></div><div class="streak" id="streakChip">🔥 0日</div></div></header>
 <main>
-<section class="page active" data-page="today"><div class="eyebrow">TODAY</div><h1 class="title" id="helloTitle">今日も○をつけよう。</h1><p class="subtitle">筋トレ・有酸素・休養のバランスを見ながら、GAJUまるをふたりで育てていく。</p><div class="card hero"><div class="hero-head"><div class="hero-copy"><span class="pill">🌱 GAJUまる Lv.<span id="levelNumInline">1</span></span><h2 id="gajuMessage">今日はここから。小さな○でも育つよ。</h2><p>毎日の積み重ねで、葉っぱも表情も少しずつ変わる。がんばり過ぎないのがコツ。</p><div class="hero-meter"><span class="level" id="levelPill">Lv.1 はじめの芽</span><div class="meter"><i id="growthBar" style="width:0%"></i></div><span class="level" id="nextText">次まで 3○</span></div></div><div class="gaju-wrap" id="gajuWrap"><img class="gaju-img" id="gajuImage" alt="GAJUまる"><span class="bug b1">🐛</span><span class="bug b2">🪲</span><span class="bug b3">🐜</span><span class="leaf-hole hole1"></span><span class="leaf-hole hole2"></span><span class="leaf-hole hole3"></span></div></div><div class="warning" style="margin-top:12px"><strong id="damageTitle">さぼっても大丈夫。</strong><br><span id="damageText">続けると元気に戻るよ。</span></div></div><div class="card companion-card"><div class="companion-copy"><span class="pill timepill" id="reminderPill">🔔 20分前</span><strong id="companionTitle">今日は筋トレの日</strong><p id="companionText">短くても1つ○をつければOK。ふたりが応援、GAJUまるが成長。</p><button class="primary start-workout" id="startWorkoutBtn">トレーニング開始</button></div><div class="companion-scene"><img class="couple" id="coupleToday" alt="応援するふたり"><img class="buddy" id="gajuBuddy" alt="小さなGAJUまる"></div></div><div class="card ai-card"><div class="ai-card-head"><div class="ai-badge">AI</div><div class="ai-card-copy"><b>AIフォームチェック β</b><span>まずは腕立て伏せから対応</span></div></div><p>カメラで姿勢を見て、回数カウントと簡単なフォーム判定をサポート。アプリ全体もこのやさしい緑トーンで統一。</p><button class="ai-pose-trigger" id="aiDemoBtn">📷 腕立てを試す</button></div><div class="section-title"><h3>AIフォームチェック対応種目</h3><span>カメラで自動サポート</span></div><div class="support-grid"><div class="support-card"><img src="asset-ai-workout.png" alt="腕立て伏せのAI画面"><div class="support-copy"><b>腕立て伏せ</b><span>回数カウント</span></div></div><div class="support-card"><img src="asset-ai-tracker.png" alt="フォームチェック画面"><div class="support-copy"><b>スクワット</b><span>AIフォーム判定</span></div></div><div class="support-card"><img src="asset-ai-pushup-guide.png" alt="プランクのAI画面"><div class="support-copy"><b>プランク</b><span>キープ時間計測</span></div></div></div><div class="section-title"><h3>主な機能</h3><span>習慣化しやすい設計</span></div><div class="feature-grid"><div class="feature-item"><div class="feature-icon">📅</div><div><b>週間プラン</b><span>曜日ごとにジム・自宅・有酸素を設定。</span></div></div><div class="feature-item"><div class="feature-icon">📈</div><div><b>記録とグラフ</b><span>体重やトレーニング回数を見える化。</span></div></div><div class="feature-item"><div class="feature-icon">🔔</div><div><b>リマインド</b><span>「あと20分だけ」の後押し通知。</span></div></div><div class="feature-item"><div class="feature-icon">🚴</div><div><b>有酸素にロードバイク</b><span>GAJUまるらしい楽しさも忘れない。</span></div></div></div><div class="section-title"><h3>今週の○</h3><span>できた日に○が増える</span></div><div class="card"><div class="record-flex"><div class="progress-ring" id="weekRing" style="--p:0%"><b id="weekScore">0/0</b></div><div><b id="weekComment">今週はここから。</b><p class="note" id="weekSub">筋トレ・有酸素・休養をバランスよく。</p></div></div></div></section>
+<section class="page active" data-page="today"><div class="eyebrow">TODAY</div><h1 class="title" id="helloTitle">今日も○をつけよう。</h1><p class="subtitle">筋トレ・有酸素・休養のバランスを見ながら、GAJUまるをふたりで育てていく。</p><div class="card hero"><div class="hero-head"><div class="hero-copy"><span class="pill">🌱 GAJUまる Lv.<span id="levelNumInline">1</span></span><h2 id="gajuMessage">今日はここから。小さな○でも育つよ。</h2><p>毎日の積み重ねで、葉っぱも表情も少しずつ変わる。がんばり過ぎないのがコツ。</p><div class="hero-meter"><span class="level" id="levelPill">Lv.1 はじめの芽</span><div class="meter"><i id="growthBar" style="width:0%"></i></div><span class="level" id="nextText">次まで 3○</span></div></div><div class="gaju-wrap" id="gajuWrap"><img class="gaju-img" id="gajuImage" alt="GAJUまる"><span class="bug b1">🐛</span><span class="bug b2">🪲</span><span class="bug b3">🐜</span><span class="leaf-hole hole1"></span><span class="leaf-hole hole2"></span><span class="leaf-hole hole3"></span></div></div><div class="warning" style="margin-top:12px"><strong id="damageTitle">さぼっても大丈夫。</strong><br><span id="damageText">続けると元気に戻るよ。</span></div></div><div class="card companion-card"><div class="companion-copy"><span class="pill timepill" id="reminderPill">🔔 20分前</span><strong id="companionTitle">今日は筋トレの日</strong><p id="companionText">短くても1つ○をつければOK。ふたりが応援、GAJUまるが成長。</p><button class="primary start-workout" id="startWorkoutBtn">トレーニング開始</button></div><div class="companion-scene"><img class="couple" id="coupleToday" alt="応援するふたり"><img class="buddy" id="gajuBuddy" alt="小さなGAJUまる"></div></div><div class="card ai-card"><div class="ai-card-head"><div class="ai-badge">AI</div><div class="ai-card-copy"><b>AIフォームチェック β</b><span>家トレ3種目に対応</span></div></div><p>カメラで姿勢を見て、回数カウントと簡単なフォーム判定をサポート。アプリ全体もこのやさしい緑トーンで統一。</p><button class="ai-pose-trigger" id="aiDemoBtn">📷 腕立てを試す</button></div><div class="section-title"><h3>AIフォームチェック対応種目</h3><span>カメラで自動サポート</span></div><div class="support-grid"><button class="support-card" data-ai-exercise="pushup"><img src="asset-ai-workout.png" alt="腕立て伏せのAI画面"><div class="support-copy"><b>腕立て伏せ</b><span>回数カウント → 試す</span></div></button><button class="support-card" data-ai-exercise="squat"><img src="asset-ai-tracker.png" alt="フォームチェック画面"><div class="support-copy"><b>スクワット</b><span>回数＋深さ判定 → 試す</span></div></button><button class="support-card" data-ai-exercise="plank"><img src="asset-ai-pushup-guide.png" alt="プランクのAI画面"><div class="support-copy"><b>プランク</b><span>正しい姿勢の秒数 → 試す</span></div></button></div><div class="section-title"><h3>主な機能</h3><span>習慣化しやすい設計</span></div><div class="feature-grid"><div class="feature-item"><div class="feature-icon">📅</div><div><b>週間プラン</b><span>曜日ごとにジム・自宅・有酸素を設定。</span></div></div><div class="feature-item"><div class="feature-icon">📈</div><div><b>記録とグラフ</b><span>体重やトレーニング回数を見える化。</span></div></div><div class="feature-item"><div class="feature-icon">🔔</div><div><b>リマインド</b><span>「あと20分だけ」の後押し通知。</span></div></div><div class="feature-item"><div class="feature-icon">🚴</div><div><b>有酸素にロードバイク</b><span>GAJUまるらしい楽しさも忘れない。</span></div></div></div><div class="section-title"><h3>今週の○</h3><span>できた日に○が増える</span></div><div class="card"><div class="record-flex"><div class="progress-ring" id="weekRing" style="--p:0%"><b id="weekScore">0/0</b></div><div><b id="weekComment">今週はここから。</b><p class="note" id="weekSub">筋トレ・有酸素・休養をバランスよく。</p></div></div></div></section>
 
-<section class="page" data-page="plan"><div class="eyebrow">PLAN</div><h1 class="title">曜日ごとに、無理なく。</h1><p class="subtitle">「何曜日・何時・何分がんばるか」を先に決める。予定が崩れた日は自宅メニューに変更できる。</p><div class="card preview-highlight"><div><h3>今週のプランを見える化</h3><p>ジムの日・有酸素の日・休養日をやさしいカードUIで確認。右のようなトーンで、応援キャラも自然に入る構成に寄せました。</p><div class="preview-points"><div>○ 予定が崩れても自宅メニューへ切替</div><div>○ 有酸素にはロードバイクも選択可</div><div>○ まずは小さな○1つでOK</div></div></div><img src="asset-plan.png" alt="今週のプラン参考画面"></div><div class="week-grid" id="weekPlan"></div><div class="card reminder-card"><div class="section-title" style="margin-top:0"><h3>プッシュ通知</h3><span id="notifyStatus">OFF</span></div><div class="reminder-preview"><b id="reminderPreviewTitle">GAJUまる「そろそろだよ🌱」</b><span id="reminderPreviewBody">19:30から30分。今日は1つ○でOK！</span></div><div class="btnrow" style="margin-top:12px"><button class="secondary" id="notifyBtn">通知をON</button><button class="secondary" id="testNotifyBtn">テスト通知</button></div><p class="note">β版の予定通知はアプリを開いている間に動作します。本番ではWeb Push＋Supabase連携にすると、アプリを閉じていても曜日・時刻どおりに届けられます。</p></div><button class="primary" id="editScheduleBtn">曜日・時間を編集</button></section>
+<section class="page" data-page="plan"><div class="eyebrow">PLAN</div><h1 class="title">曜日ごとに、無理なく。</h1><p class="subtitle">曜日固定でも、○日おきでも。生活に合う決め方を選べます。</p><div class="plan-badge" id="planModeBadge">曜日プラン</div><div class="card preview-highlight"><div><h3>今週のプランを見える化</h3><p>ジムの日・有酸素の日・休養日をやさしいカードUIで確認。右のようなトーンで、応援キャラも自然に入る構成に寄せました。</p><div class="preview-points"><div>○ 予定が崩れても自宅メニューへ切替</div><div>○ 有酸素にはロードバイクも選択可</div><div>○ まずは小さな○1つでOK</div></div></div><img src="asset-plan.png" alt="今週のプラン参考画面"></div><div class="week-grid" id="weekPlan"></div><div class="card reminder-card"><div class="section-title" style="margin-top:0"><h3>プッシュ通知</h3><span id="notifyStatus">OFF</span></div><div class="reminder-preview"><b id="reminderPreviewTitle">GAJUまる「そろそろだよ🌱」</b><span id="reminderPreviewBody">19:30から30分。今日は1つ○でOK！</span></div><div class="btnrow" style="margin-top:12px"><button class="secondary" id="notifyBtn">通知をON</button><button class="secondary" id="testNotifyBtn">テスト通知</button></div><p class="note">β版の予定通知はアプリを開いている間に動作します。本番ではWeb Push＋Supabase連携にすると、アプリを閉じていても曜日・時刻どおりに届けられます。</p></div><button class="primary" id="editScheduleBtn">プランを編集</button></section>
 
-<section class="page" data-page="gaju"><div class="eyebrow">GAJUまる</div><h1 class="title">がんばりが、見た目になる。</h1><p class="subtitle">序盤は小さな○でもどんどん変化。さぼっても別の生き物にはならず、葉っぱや虫に変化が出る。</p><div class="card"><div class="today-row"><div><span class="pill" id="gajuPageLevel">Lv.1</span><h3 id="gajuPageName" style="margin:8px 0 0">はじめの芽</h3></div><strong id="gajuPagePoints">0 ○</strong></div><div class="gaju-wrap" id="gajuWrap2" style="width:100%;min-height:260px"><img class="gaju-img" id="gajuImage2" src="" alt="GAJUまる" style="max-height:250px"><span class="bug b1">🐛</span><span class="bug b2">🪲</span><span class="bug b3">🐜</span><span class="leaf-hole hole1"></span><span class="leaf-hole hole2"></span><span class="leaf-hole hole3"></span></div><div class="warning" id="damageCard"><strong>元気！</strong><br>さぼり変化はなし。葉っぱもつやつや。</div></div><div class="card character-note"><img id="coupleGajuPage" alt="応援するふたり"><div><b>ふたりは応援役、GAJUまるは成長役。</b><p>この2つのキャラクターはずっと一緒。運動の記録で変化するのはGAJUまるです。</p></div></div><div class="section-title"><h3>成長アルバム</h3><span>最初は変化が速い</span></div><div class="growth-track" id="growthTrack"></div><div class="section-title"><h3>特定の頑張りで変化</h3><span>好きな習慣が個性になる</span></div><div class="skill-chip-row"><div class="skill-chip"><b>有酸素多め</b><span>ロードバイク好きな元気系に。</span></div><div class="skill-chip"><b>ストレッチ多め</b><span>しなやかボディのGAJUまる。</span></div><div class="skill-chip"><b>記録好き</b><span>ノートやボトルを持った姿に。</span></div><div class="skill-chip"><b>早起きトレ</b><span>朝日と一緒にのびのび成長。</span></div></div></section>
+<section class="page" data-page="gaju"><div class="eyebrow">GAJUまる</div><h1 class="title">がんばりが、見た目になる。</h1><p class="subtitle">序盤は小さな○でもどんどん変化。さぼっても別の生き物にはならず、葉っぱや虫に変化が出る。</p><div class="card"><div class="today-row"><div><span class="pill" id="gajuPageLevel">Lv.1</span><h3 id="gajuPageName" style="margin:8px 0 0">はじめの芽</h3></div><strong id="gajuPagePoints">0 ○</strong></div><div class="gaju-wrap" id="gajuWrap2" style="width:100%;min-height:260px"><img class="gaju-img" id="gajuImage2" src="" alt="GAJUまる" style="max-height:250px"><span class="bug b1">🐛</span><span class="bug b2">🪲</span><span class="bug b3">🐜</span><span class="leaf-hole hole1"></span><span class="leaf-hole hole2"></span><span class="leaf-hole hole3"></span></div><div class="warning" id="damageCard"><strong>元気！</strong><br>さぼり変化はなし。葉っぱもつやつや。</div></div><div class="card character-note"><img id="coupleGajuPage" alt="応援するふたり"><div><b>ふたりは応援役、GAJUまるは成長役。</b><p>この2つのキャラクターはずっと一緒。運動の記録で変化するのはGAJUまるです。</p></div></div><div class="card growth-preview"><img src="asset-growth.png" alt="GAJUまる成長イメージ"><p>デモ版では、まずこの世界観に寄せて見た目を統一。正式版では同じ顔・葉っぱ・体型ルールで成長画像を描き分けます。</p></div><div class="section-title"><h3>成長アルバム</h3><span>デモ用の統一表示</span></div><div class="growth-track" id="growthTrack"></div><div class="section-title"><h3>特定の頑張りで変化</h3><span>好きな習慣が個性になる</span></div><div class="skill-chip-row"><div class="skill-chip"><b>有酸素多め</b><span>ロードバイク好きな元気系に。</span></div><div class="skill-chip"><b>ストレッチ多め</b><span>しなやかボディのGAJUまる。</span></div><div class="skill-chip"><b>記録好き</b><span>ノートやボトルを持った姿に。</span></div><div class="skill-chip"><b>早起きトレ</b><span>朝日と一緒にのびのび成長。</span></div></div></section>
 
 <section class="page" data-page="record"><div class="eyebrow">RECORD</div><h1 class="title">○が積み上がっていく。</h1><p class="subtitle">体重だけで評価しない。運動・有酸素・休養まで「できた」を残す。</p><div class="card"><div class="record-flex"><div class="progress-ring" id="totalRing" style="--p:0%"><b id="totalPoints">0</b></div><div><b>これまでの○</b><p class="note">1回でも10分でも、やったことを記録。</p></div></div><div class="stats"><div class="stat"><b id="statStrength">0</b><span>筋トレ</span></div><div class="stat"><b id="statCardio">0</b><span>有酸素</span></div><div class="stat"><b id="statRest">0</b><span>休養</span></div></div></div><div class="card record-shot"><div class="section-title" style="margin-top:0"><h3>記録画面のイメージ</h3><span>見やすい緑トーンに統一</span></div><img src="asset-ai-tracker.png" alt="記録画面の参考イメージ"><div class="muted-list"><div><b>体重の変化</b> 小さな折れ線グラフで把握。</div><div><b>トレーニング記録</b> ベンチプレスやウォーキングを一覧表示。</div><div><b>達成感の見える化</b> 回数・継続・バッジでモチベ維持。</div></div></div><div class="card"><h3 style="margin-top:0">プロフィール</h3><div class="mini-form"><div class="field"><label>身長</label><input id="profileHeight" type="number"></div><div class="field"><label>体重</label><input id="profileWeight" type="number" step="0.1"></div><div class="field full"><label>目標</label><select id="profileGoal"><option>健康維持</option><option>引き締め</option><option>筋力アップ</option><option>体力アップ</option></select></div></div><button class="secondary" id="saveProfileBtn" style="width:100%;margin-top:10px">プロフィール更新</button></div></section>
 
@@ -98,7 +111,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 </div>
 
 <div class="modal" id="setupModal"><div class="sheet"><div class="stepdots"><i class="on"></i><i></i><i></i></div><div id="setupStep"></div></div></div>
-<div class="modal" id="scheduleModal"><div class="sheet"><div class="eyebrow">WEEKLY PLAN</div><h2>曜日・時間を決めよう</h2><p>がんばる曜日だけON。筋トレ・有酸素・ストレッチ・休養から選べます。有酸素を選ぶと、ウォーキング・ジョギング・ロードバイクなどから種目を選べます。</p><div class="schedule-editor" id="scheduleEditor"></div><button class="primary" id="saveScheduleBtn" style="margin-top:14px">この予定で保存</button><button class="secondary" id="closeScheduleBtn" style="width:100%;margin-top:8px">閉じる</button></div></div>
+<div class="modal" id="scheduleModal"><div class="sheet"><div class="eyebrow">PLAN SETTING</div><h2>続けやすい決め方を選ぼう</h2><p>毎曜日を1つずつ触らなくてもOK。同じ条件を複数曜日へ一括設定したり、「2日おき」などの繰り返しにもできます。</p><div class="plan-mode"><button id="modeWeekdayBtn">曜日で決める</button><button id="modeIntervalBtn">○日おきにする</button></div><div id="weekdayPlanner"><div class="bulk-box"><h3>まとめて設定</h3><p>曜日を複数選んで、時間・運動・分数を一度に反映。</p><div class="quick-days"><button data-preset="weekdays">平日</button><button data-preset="mwf">月・水・金</button><button data-preset="tt">火・木</button><button data-preset="weekend">土・日</button><button data-preset="all">毎日</button></div><div class="day-picks" id="bulkDayPicks"></div><div class="bulk-form"><div><label>メニュー</label><select id="bulkType"></select></div><div><label>時間</label><input id="bulkTime" type="time" value="19:30"></div><div><label>分数</label><input id="bulkMinutes" type="number" min="5" max="180" step="5" value="30"></div><div id="bulkCardioWrap" style="display:none"><label>有酸素</label><select id="bulkCardio"></select></div></div><button class="secondary bulk-apply" id="bulkApplyBtn">選んだ曜日に反映</button></div><button class="advanced-toggle" id="advancedToggleBtn">▾ 曜日ごとの細かい設定</button><div class="advanced-wrap" id="advancedWrap"><div class="schedule-editor" id="scheduleEditor"></div></div></div><div id="intervalPlanner" style="display:none"><div class="interval-box"><h3>○日おきのプラン</h3><p>開始日を基準に「1日おき」「2日おき」「3日おき」などで自動的にトレーニング日を作ります。</p><div class="interval-form"><div><label>何日おき？</label><select id="intervalEvery"><option value="1">毎日</option><option value="2">1日おき</option><option value="3">2日おき</option><option value="4">3日おき</option><option value="5">4日おき</option><option value="7">6日おき</option></select></div><div><label>開始日</label><input id="intervalStart" type="date"></div><div><label>時間</label><input id="intervalTime" type="time" value="19:30"></div><div><label>分数</label><input id="intervalMinutes" type="number" min="5" max="180" step="5" value="30"></div><div class="full"><label>メニュー</label><select id="intervalType"></select></div><div class="full" id="intervalCardioWrap" style="display:none"><label>有酸素の種目</label><select id="intervalCardio"></select></div></div><div class="interval-summary" id="intervalSummary"></div></div></div><button class="primary" id="saveScheduleBtn" style="margin-top:14px">このプランで保存</button><button class="secondary" id="closeScheduleBtn" style="width:100%;margin-top:8px">閉じる</button></div></div>
 
 <div class="modal" id="workoutModal"><div class="sheet workout-sheet"><div class="workout-top"><button id="closeWorkoutBtn" aria-label="閉じる">×</button><b>WORKOUT</b><span id="workoutStepText">1 / 1</span></div><div class="workout-coach"><img class="coach-couple" id="workoutCouple" alt="応援するふたり"><img class="coach-gaju" id="workoutGaju" alt="GAJUまる"><div><b id="workoutCoachTitle">一緒にやろう。</b><small id="workoutCoachText">1セットずつ○にしていこう。</small></div></div><div class="workout-main-card"><div class="eyebrow" id="workoutKind">TODAY'S TRAINING</div><h2 id="workoutTaskName">スクワット</h2><div class="workout-counter" id="workoutCounter">10回</div><div class="workout-set" id="workoutSetText">セット 1 / 3</div><div class="workout-progress"><i id="workoutProgressBar"></i></div><div class="rest-panel" id="restPanel">次のセットまで<b id="restTime">00:45</b></div><div class="workout-actions"><button class="primary" id="completeSetBtn">セット完了</button><button class="secondary" id="skipRestBtn" style="display:none">休憩をスキップ</button><button class="ai-pose-trigger" id="workoutAiBtn" hidden>AIフォームチェック β</button></div></div></div></div>
 
@@ -114,7 +127,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
   </div>
   <div class="pose-count-card">
     <div><strong id="poseTitle">腕立て伏せ</strong><small id="poseGoalText">目標 10回</small></div>
-    <div class="pose-count"><span id="poseCount">0</span><em> / <span id="poseGoal">10</span>回</em></div>
+    <div class="pose-count"><span id="poseCount">0</span><em> / <span id="poseGoal">10</span><span id="poseUnit">回</span></em></div>
   </div>
   <div class="pose-feedback"><i id="poseFeedbackIcon">📷</i><span id="poseFeedback">スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください</span></div>
   <div class="pose-metrics">
@@ -157,7 +170,7 @@ const CARDIO={
  'その他':{icon:'❤️',tasks:['好きな有酸素運動','気持ちよく続けられる強度で']}
 };
 const defaultState=()=>({
- setup:false,nickname:'',gender:'女性',height:160,weight:55,goal:'引き締め',lead:20,
+ setup:false,nickname:'',gender:'女性',height:160,weight:55,goal:'引き締め',lead:20,planMode:'weekday',intervalPlan:{every:2,startDate:ymd(),time:'19:30',minutes:30,type:'自宅筋トレ',cardio:'ウォーキング'},
  schedule:{
   1:{on:true,time:'19:30',minutes:30,type:'自宅筋トレ'},
   2:{on:false,time:'19:30',minutes:20,type:'有酸素',cardio:'ウォーキング'},
@@ -172,7 +185,7 @@ let state=load();let setupStep=0;
 function load(){
  try{
   const base=defaultState(),saved=JSON.parse(localStorage.getItem('gajumaru-state')||'{}');
-  const merged={...base,...saved,schedule:{...base.schedule,...(saved.schedule||{})}};
+  const merged={...base,...saved,schedule:{...base.schedule,...(saved.schedule||{})},intervalPlan:{...base.intervalPlan,...(saved.intervalPlan||{})}};
   Object.keys(merged.schedule).forEach(d=>{
    const sc=merged.schedule[d];
    if(sc?.type==='ロードバイク'){sc.type='有酸素';sc.cardio='ロードバイク'}
@@ -186,7 +199,10 @@ function save(){localStorage.setItem('gajumaru-state',JSON.stringify(state));}
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
 function ymd(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
-function todaySchedule(){return state.schedule[new Date().getDay()]||{on:false}}
+function dayDiff(a,b){const A=new Date(a.getFullYear(),a.getMonth(),a.getDate()),B=new Date(b.getFullYear(),b.getMonth(),b.getDate());return Math.round((A-B)/86400000)}
+function intervalIsOn(d){if(state.planMode!=='interval')return false;const p=state.intervalPlan||{};if(!p.startDate)return false;const start=new Date(p.startDate+'T00:00:00');const diff=dayDiff(d,start);return diff>=0 && diff%(Number(p.every)||2)===0}
+function scheduleForDate(d=new Date()){if(state.planMode==='interval'){const p=state.intervalPlan||{};return intervalIsOn(d)?{on:true,time:p.time||'19:30',minutes:Number(p.minutes)||30,type:p.type||'自宅筋トレ',...(p.type==='有酸素'?{cardio:p.cardio||'ウォーキング'}:{}),interval:true}:{on:false,interval:true}}return state.schedule[d.getDay()]||{on:false}}
+function todaySchedule(){return scheduleForDate(new Date())}
 function allChecks(){return Object.values(state.checks).flat()}
 function points(){return allChecks().length}
 function stage(){const p=points();let s=GROWTH[0],idx=0;GROWTH.forEach((g,i)=>{if(p>=g.at){s=g;idx=i}});return {...s,idx}}
@@ -199,7 +215,7 @@ function setPage(name){$$('.page').forEach(p=>p.classList.toggle('active',p.data
 $$('.nav button').forEach(b=>b.onclick=()=>setPage(b.dataset.nav));
 function planMisses(){
  let miss=state.manualMiss||0, d=new Date();
- for(let i=1;i<=7;i++){const x=new Date(d);x.setDate(d.getDate()-i);const sc=state.schedule[x.getDay()];if(sc?.on && !(state.checks[ymd(x)]||[]).length)miss++;}
+ for(let i=1;i<=7;i++){const x=new Date(d);x.setDate(d.getDate()-i);const sc=scheduleForDate(x);if(sc?.on && !(state.checks[ymd(x)]||[]).length)miss++;}
  return Math.min(3,miss);
 }
 function damageLabel(level){
@@ -215,7 +231,7 @@ function render(){
  const st=stage(),nxt=nextStage(),p=points(),miss=planMisses();
  $('#coupleToday').src=COUPLE_ASSET;$('#coupleGajuPage').src=COUPLE_ASSET;$('#gajuBuddy').src=BASE_GAJU_ASSET;
  const scNow=todaySchedule();$('#companionTitle').textContent=scNow.on?`${scheduleIcon(scNow)} 今日は${scheduleName(scNow,true)}`:'今日は休養日。';$('#companionText').textContent=scNow.on?`${scNow.minutes}分だけ一緒に。終わった○でGAJUまるも育つよ。`:'休むのも育てる一歩。元気が戻った日にまた○をつけよう。';
- ['#gajuImage','#gajuImage2'].forEach(id=>$(id).src=st.img);['#gajuWrap','#gajuWrap2'].forEach(id=>{const el=$(id);el.classList.remove('damage-1','damage-2','damage-3');if(miss)el.classList.add('damage-'+miss)});
+ ['#gajuImage','#gajuImage2'].forEach(id=>$(id).src=BASE_GAJU_ASSET);['#gajuWrap','#gajuWrap2'].forEach(id=>{const el=$(id);el.style.setProperty('--gaju-scale',String(.80+Math.min(st.idx,5)*.05));el.classList.remove('damage-1','damage-2','damage-3');if(miss)el.classList.add('damage-'+miss)});
  $('#levelPill').textContent=`Lv.${st.idx+1} ${st.name}`;$('#levelNumInline').textContent=st.idx+1;$('#gajuMessage').textContent=st.msg;$('#pointsText').textContent=`${p} ○`;$('#gajuPagePoints').textContent=`${p} ○`;$('#gajuPageLevel').textContent=`Lv.${st.idx+1}`;$('#gajuPageName').textContent=st.name;
  const dl=damageLabel(miss);$('#damageText').textContent=dl[1];$('#damageCard').innerHTML=`<strong>${dl[0]}</strong><br>${dl[1]}`;
  if(nxt){const base=st.at,span=nxt.at-base,progress=Math.max(0,Math.min(100,((p-base)/span)*100));$('#growthBar').style.width=progress+'%';$('#nextText').textContent=`次まで ${nxt.at-p}○`;}else{$('#growthBar').style.width='100%';$('#nextText').textContent='育成中';}
@@ -231,13 +247,13 @@ function renderToday(){
 function toggleCheck(id){const key=ymd(),arr=state.checks[key]||[];const i=arr.indexOf(id);if(i>=0)arr.splice(i,1);else{arr.push(id);state.manualMiss=Math.max(0,(state.manualMiss||0)-1);toast('○！ GAJUまるが喜んでる 🌱')}state.checks[key]=arr;save();render()}
 function renderWeek(){
  const host=$('#weekPlan');host.innerHTML='';const now=new Date(),start=new Date(now);start.setDate(now.getDate()-((now.getDay()+6)%7));let scheduled=0,doneDays=0;
- for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);const sc=state.schedule[d.getDay()];if(sc?.on)scheduled++;const done=(state.checks[ymd(d)]||[]).length>0;if(done)doneDays++;
+ for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);const sc=scheduleForDate(d);if(sc?.on)scheduled++;const done=(state.checks[ymd(d)]||[]).length>0;if(done)doneDays++;
   const el=document.createElement('div');el.className='day '+(ymd(d)===ymd()?'today':'');el.innerHTML=`<div class="day-name">${DOW[d.getDay()]}</div><div class="day-detail"><strong>${sc?.on?scheduleIcon(sc)+' '+scheduleName(sc,true):'OFF'}</strong><span>${sc?.on?`${sc.time}・${sc.minutes}分`:'予定なし'}</span></div><div class="day-state">${done?'○':sc?.on?'・':'−'}</div>`;host.appendChild(el);
  }
  const ratio=scheduled?Math.round(doneDays/scheduled*100):0;$('#weekRing').style.setProperty('--p',ratio+'%');$('#weekScore').textContent=`${doneDays}/${scheduled}`;$('#weekComment').textContent=ratio>=100?'今週、全部○！':ratio>=50?'いいペース！':'今週はここから。';
- const sc=todaySchedule();$('#reminderPreviewTitle').textContent=`GAJUまる「${sc.on?'そろそろだよ🌱':'今日は休養日だよ🌙'}」`;$('#reminderPreviewBody').textContent=sc.on?`${sc.time}から${sc.minutes}分。今日は1つ○でOK！`:'休むのも計画のうち。';
+ const sc=todaySchedule();const modeText=state.planMode==='interval'?`${state.intervalPlan.every===1?'毎日':(state.intervalPlan.every-1)+'日おき'}プラン`:'曜日プラン';const badge=$('#planModeBadge');if(badge)badge.textContent=modeText;$('#reminderPreviewTitle').textContent=`GAJUまる「${sc.on?'そろそろだよ🌱':'今日は休養日だよ🌙'}」`;$('#reminderPreviewBody').textContent=sc.on?`${sc.time}から${sc.minutes}分。今日は1つ○でOK！`:'休むのも計画のうち。';
 }
-function renderGrowth(){const p=points(),host=$('#growthTrack');host.innerHTML=GROWTH.map((g,i)=>`<div class="growth-card ${p<g.at?'locked':''}"><img src="${g.img}"><b>${g.name}</b><small>${g.at===0?'START':g.at+' ○で解放'}</small></div>`).join('')}
+function renderGrowth(){const p=points(),host=$('#growthTrack');host.innerHTML=GROWTH.map((g,i)=>`<div class="growth-card ${p<g.at?'locked':''}"><img class="gaju-demo-img" style="--demo-scale:${.72+i*.055}" src="${BASE_GAJU_ASSET}"><b>${g.name}</b><small>${g.at===0?'START':g.at+' ○で解放'}</small></div>`).join('')}
 function renderStats(){const all=allChecks();const strength=all.filter(x=>/筋トレ|スクワット|プッシュ/.test(x)).length,cardio=all.filter(x=>/有酸素|自由運動/.test(x)).length,rest=all.filter(x=>/休養/.test(x)).length;$('#statStrength').textContent=strength;$('#statCardio').textContent=cardio;$('#statRest').textContent=rest;$('#totalPoints').textContent=points();$('#totalRing').style.setProperty('--p',Math.min(100,points()/24*100)+'%');$('#profileHeight').value=state.height;$('#profileWeight').value=state.weight;$('#profileGoal').value=state.goal;const nick=state.nickname||'あなた';$('#profileHeadline').textContent=`${nick}とGAJUまる、今日も一歩ずつ。`;$('#profileSummaryText').textContent=`目標は「${state.goal}」。通知は${state.lead}分前にお知らせします。`;$('#profileChipGoal').textContent=`目標：${state.goal}`;$('#profileChipHeight').textContent=`身長：${state.height}cm`;$('#profileChipWeight').textContent=`体重：${state.weight}kg`}
 function renderSettings(){$('#nicknameInput').value=state.nickname;$('#leadInput').value=String(state.lead);$('#notifyStatus').textContent=('Notification'in window&&Notification.permission==='granted')?'ON':'OFF'}
 $('#saveProfileBtn').onclick=()=>{state.height=Number($('#profileHeight').value)||state.height;state.weight=Number($('#profileWeight').value)||state.weight;state.goal=$('#profileGoal').value;save();toast('プロフィールを更新しました')};
@@ -267,7 +283,7 @@ function renderWorkout(){
  $('#workoutStepText').textContent=`${workoutSession.index+1} / ${total}`;$('#workoutKind').textContent=scheduleName(workoutSession.sc,true);$('#workoutTaskName').textContent=info.name;$('#workoutCounter').textContent=info.count;$('#workoutSetText').textContent=info.sets>1?`セット ${workoutSession.set} / ${info.sets}`:'この種目を完了';
  const doneBase=workoutSession.index/total,doneSet=(workoutSession.set-1)/Math.max(1,info.sets)/total;$('#workoutProgressBar').style.width=Math.round((doneBase+doneSet)*100)+'%';
  $('#workoutCoachTitle').textContent=state.nickname?`${state.nickname}、いいペース。`:'いいペース。';$('#workoutCoachText').textContent=info.sets>1?'1セットずつでOK。GAJUまるも見てるよ。':'終わったら○にしよう。';
- const aiSupported=/プッシュアップ|腕立て/.test(info.name);$('#workoutAiBtn').hidden=!aiSupported;
+ const aiSupported=/プッシュアップ|腕立て|スクワット|プランク/.test(info.name);$('#workoutAiBtn').hidden=!aiSupported;if(aiSupported)$('#workoutAiBtn').textContent=`AI ${poseConfig(exerciseFromName(info.name)).title}チェック β`;
 }
 function setRest(seconds=45){
  if(restTimer)clearInterval(restTimer);let left=seconds;$('#restPanel').classList.add('show');$('#skipRestBtn').style.display='block';$('#completeSetBtn').disabled=true;
@@ -286,7 +302,7 @@ $('#startWorkoutBtn').onclick=openWorkout;$('#closeWorkoutBtn').onclick=closeWor
 
 // --- AI pose check beta: push-up counter ---
 let poseLandmarker=null,posePkg=null,poseStream=null,poseRaf=null,poseActive=false,poseLastVideoTime=-1,poseLastInfer=0;
-let poseCount=0,poseGoal=10,posePhase='wait',poseLastRepAt=0,poseFacing='user',poseSource='demo',poseGoalReached=false;
+let poseCount=0,poseGoal=10,posePhase='wait',poseLastRepAt=0,poseFacing='user',poseSource='demo',poseGoalReached=false,poseExercise='pushup',poseGoodMs=0,poseLastProcessAt=0;
 const POSE_CONNECTIONS=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[23,25],[25,27],[24,26],[26,28]];
 
 function angle3(a,b,c){
@@ -314,24 +330,21 @@ function setPoseFeedback(text,icon='✨'){
  const el=$('#poseFeedback');if(el)el.textContent=text;
  const ic=$('#poseFeedbackIcon');if(ic)ic.textContent=icon;
 }
+function exerciseFromName(name=''){if(/スクワット/.test(name))return 'squat';if(/プランク/.test(name))return 'plank';return 'pushup'}
+function poseConfig(ex=poseExercise){return ex==='squat'?{title:'スクワット',goal:10,unit:'回',m1:'膝の角度',m2:'上体ライン',hint:'スマホは縦のまま、正面〜少し斜め前から全身を入れてください'}:ex==='plank'?{title:'プランク',goal:30,unit:'秒',m1:'体の角度',m2:'キープ時間',hint:'スマホは縦のまま、正面〜斜め前から肩・腰・膝が入るように置いてください'}:{title:'腕立て伏せ',goal:10,unit:'回',m1:'肘の角度',m2:'体のライン',hint:'スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください'}}
 function resetPoseCounter(){
- poseCount=0;posePhase='wait';poseLastRepAt=0;poseGoalReached=false;
+ poseCount=0;posePhase='wait';poseLastRepAt=0;poseGoalReached=false;poseGoodMs=0;poseLastProcessAt=0;
  $('#poseCount').textContent='0';$('#posePhase').textContent='WAIT';$('#poseApplyBtn').disabled=true;
- $('#poseElbow').textContent='--°';$('#poseBody').textContent='--°';
- setPoseFeedback('スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください','📷');
+ $('#poseElbow').textContent='--°';$('#poseBody').textContent='--°';const c=poseConfig();
+ $('#poseMetric1Label').textContent=c.m1;$('#poseMetric2Label').textContent=c.m2;setPoseFeedback(c.hint,'📷');
 }
-function openPoseCheck(source='demo'){
- poseSource=source;poseGoal=10;
- if(source==='workout'&&workoutSession){
-  const info=workoutTaskInfo();poseGoal=parseInt(info?.count,10)||10;
- }
- $('#poseGoal').textContent=poseGoal;
- $('#poseGoalText').textContent=`目標 ${poseGoal}回・縦持ち対応`;
- $('#poseTitle').textContent=source==='workout'?workoutTaskInfo().name:'腕立て伏せ';
- resetPoseCounter();
- $('#poseModal').classList.add('open');
- $('#poseStatus').textContent='カメラを開始してください';
- $('#poseLive').textContent='STOP';
+function openPoseCheck(source='demo',exercise='pushup'){
+ poseSource=source;poseExercise=exercise;let cfg=poseConfig(exercise);poseGoal=cfg.goal;
+ if(source==='workout'&&workoutSession){const info=workoutTaskInfo();poseExercise=exerciseFromName(info?.name||'');cfg=poseConfig(poseExercise);poseGoal=parseInt(info?.count,10)||cfg.goal}
+ $('#poseGoal').textContent=poseGoal;$('#poseUnit').textContent=cfg.unit;
+ $('#poseGoalText').textContent=`目標 ${poseGoal}${cfg.unit}・縦持ち対応`;
+ $('#poseTitle').textContent=source==='workout'?workoutTaskInfo().name:cfg.title;
+ resetPoseCounter();$('#poseModal').classList.add('open');$('#poseStatus').textContent='カメラを開始してください';$('#poseLive').textContent='STOP';
 }
 async function ensurePoseLandmarker(){
  if(poseLandmarker)return poseLandmarker;
@@ -464,6 +477,23 @@ function processPushup(lms,world){
   }
  }
 }
+
+function processSquat(lms,world){
+ const pairs=[[23,25,27],[24,26,28]],angles=[];for(const ids of pairs){const vis=ids.map(i=>lmVis(lms[i]));if(Math.min(...vis)<.35)continue;const a=world?angle3D(world[ids[0]],world[ids[1]],world[ids[2]]):angle3(lms[ids[0]],lms[ids[1]],lms[ids[2]]);if(Number.isFinite(a))angles.push(a)}
+ if(!angles.length){$('#posePhase').textContent='WAIT';setPoseFeedback('腰・膝・足首が見えるように少し離れてね','📷');return}
+ const knee=angles.reduce((a,b)=>a+b,0)/angles.length;let torso=NaN;if(world){const sh=mid3(world[11],world[12]),hip=mid3(world[23],world[24]),kneeMid=mid3(world[25],world[26]);torso=angle3D(sh,hip,kneeMid)}
+ $('#poseElbow').textContent=Math.round(knee)+'°';$('#poseBody').textContent=Number.isFinite(torso)?Math.round(torso)+'°':'--°';
+ const now=performance.now();if(knee<105){if(posePhase==='up'||posePhase==='wait'||posePhase==='move')posePhase='down';$('#posePhase').textContent='DOWN';setPoseFeedback('いい深さ！ かかとを意識して立とう','⬇️')}else if(knee>155){if(posePhase==='down'&&now-poseLastRepAt>550){poseCount++;poseLastRepAt=now;$('#poseCount').textContent=poseCount;if(navigator.vibrate)navigator.vibrate(35)}posePhase='up';$('#posePhase').textContent='UP';setPoseFeedback(poseCount?`${poseCount}回！ 安定してるよ🌱`:'その姿勢からスタート！','⬆️')}else{posePhase='move';$('#posePhase').textContent='MOVE';setPoseFeedback('膝とつま先の向きをそろえて、ゆっくりしゃがもう','✨')}
+ finishPoseGoal('回');
+}
+function processPlank(lms,world,ts){
+ const enough=Math.max(lmVis(lms[11]),lmVis(lms[12]))>.35&&Math.max(lmVis(lms[23]),lmVis(lms[24]))>.35&&Math.max(lmVis(lms[25]),lmVis(lms[26]))>.30;if(!enough){poseLastProcessAt=ts;$('#posePhase').textContent='WAIT';setPoseFeedback('肩・腰・膝まで入るように少し離れてね','📷');return}
+ let body=NaN;if(world){body=angle3D(mid3(world[11],world[12]),mid3(world[23],world[24]),mid3(world[25],world[26]))}else{const left=sideScore(lms,[11,23,25])>=sideScore(lms,[12,24,26]);const ids=left?[11,23,25]:[12,24,26];body=angle3(lms[ids[0]],lms[ids[1]],lms[ids[2]])}
+ const dt=poseLastProcessAt?Math.min(180,Math.max(0,ts-poseLastProcessAt)):0;poseLastProcessAt=ts;$('#poseElbow').textContent=Number.isFinite(body)?Math.round(body)+'°':'--°';
+ if(!Number.isFinite(body)||body<150){$('#posePhase').textContent='FORM';$('#poseBody').textContent=`${poseCount}秒`;setPoseFeedback('腰が落ちる／上がりすぎるかも。頭〜膝を一直線に','🌱');return}
+ poseGoodMs+=dt;poseCount=Math.floor(poseGoodMs/1000);$('#poseCount').textContent=poseCount;$('#poseBody').textContent=`${poseCount}秒`;$('#posePhase').textContent='HOLD';setPoseFeedback(`${poseCount}秒キープ！ 呼吸を止めないでね`,'⏱️');finishPoseGoal('秒');
+}
+function finishPoseGoal(unit){if(poseCount>=poseGoal){$('#poseApplyBtn').disabled=false;if(!poseGoalReached){poseGoalReached=true;$('#poseStatus').textContent=`${poseGoal}${unit}達成！`;setPoseFeedback('達成！ GAJUまるが喜んでる！','🎉');if(navigator.vibrate)navigator.vibrate([80,60,120])}}}
 function poseLoop(ts){
  if(!poseActive)return;
  const video=$('#poseVideo');
@@ -471,7 +501,7 @@ function poseLoop(ts){
   poseLastInfer=ts;poseLastVideoTime=video.currentTime;
   try{
    const result=poseLandmarker.detectForVideo(video,ts),lms=result?.landmarks?.[0],world=result?.worldLandmarks?.[0];
-   if(lms){drawPose(lms);processPushup(lms,world)}
+   if(lms){drawPose(lms);if(poseExercise==='squat')processSquat(lms,world);else if(poseExercise==='plank')processPlank(lms,world,ts);else processPushup(lms,world)}
    else{
     const c=$('#poseCanvas');c?.getContext('2d')?.clearRect(0,0,c.width,c.height);
     $('#posePhase').textContent='WAIT';setPoseFeedback('人が見つからないよ。縦のまま少し離れて、上半身〜膝を入れてね','📷');
@@ -481,17 +511,13 @@ function poseLoop(ts){
  poseRaf=requestAnimationFrame(poseLoop);
 }
 function applyPoseResult(){
- if(poseCount<poseGoal){toast(`あと${Math.max(0,poseGoal-poseCount)}回！`);return}
- const src=poseSource;closePose();
- if(src==='workout'&&workoutSession){
-  completeWorkoutSet();toast('AIカウントをこのセットに反映したよ 🌱');return;
- }
- const key=ymd(),arr=state.checks[key]||[],id='AI-プッシュアップ-'+Date.now();
- arr.push(id);state.checks[key]=arr;state.manualMiss=Math.max(0,(state.manualMiss||0)-1);
- save();render();toast('AI腕立てで○！ GAJUまるが育った 🌱');
+ const cfg=poseConfig();if(poseCount<poseGoal){toast(`あと${Math.max(0,poseGoal-poseCount)}${cfg.unit}！`);return}
+ const src=poseSource;closePose();if(src==='workout'&&workoutSession){completeWorkoutSet();toast(`AI ${cfg.title}をこのセットに反映したよ 🌱`);return}
+ const key=ymd(),arr=state.checks[key]||[],id='AI-'+cfg.title+'-'+Date.now();arr.push(id);state.checks[key]=arr;state.manualMiss=Math.max(0,(state.manualMiss||0)-1);save();render();toast(`AI ${cfg.title}で○！ GAJUまるが育った 🌱`);
 }
-$('#aiDemoBtn').onclick=()=>openPoseCheck('demo');
-$('#workoutAiBtn').onclick=()=>openPoseCheck('workout');
+$('#aiDemoBtn').onclick=()=>openPoseCheck('demo','pushup');
+$$('[data-ai-exercise]').forEach(b=>b.onclick=()=>openPoseCheck('demo',b.dataset.aiExercise));
+$('#workoutAiBtn').onclick=()=>openPoseCheck('workout',exerciseFromName(workoutTaskInfo()?.name||''));
 $('#closePoseBtn').onclick=closePose;
 $('#poseStartBtn').onclick=startPoseCamera;
 $('#poseStopBtn').onclick=stopPoseCamera;
@@ -501,26 +527,38 @@ $('#poseFlipBtn').onclick=async()=>{
  if(poseActive){stopPoseCamera();await startPoseCamera()}else toast('カメラを切り替えました');
 };
 
+let scheduleDraftMode='weekday',bulkSelected=new Set([1,3,5]);
+function fillOptions(sel,items,value){sel.innerHTML=items.map(x=>`<option ${x===value?'selected':''}>${x}</option>`).join('')}
+function renderBulkDayPicks(){const host=$('#bulkDayPicks');host.innerHTML='';[1,2,3,4,5,6,0].forEach(d=>{const b=document.createElement('button');b.type='button';b.className='day-pick '+(bulkSelected.has(d)?'on':'');b.textContent=DOW[d];b.onclick=()=>{bulkSelected.has(d)?bulkSelected.delete(d):bulkSelected.add(d);renderBulkDayPicks()};host.appendChild(b)})}
+function renderScheduleRows(){const host=$('#scheduleEditor');host.innerHTML='';[1,2,3,4,5,6,0].forEach(d=>{const s=state.schedule[d];const row=document.createElement('div');row.className='schedule-line';row.innerHTML=`<div class="dow">${DOW[d]}</div><input type="checkbox" ${s.on?'checked':''} data-k="on"><select data-k="type">${Object.keys(TYPES).map(t=>`<option ${t===s.type?'selected':''}>${t}</option>`).join('')}</select><input type="time" value="${s.time}" data-k="time"><input type="number" min="5" max="180" step="5" value="${s.minutes}" data-k="minutes"><div class="cardio-sub ${s.type==='有酸素'?'show':''}" data-cardio-wrap><span>有酸素</span><select data-k="cardio">${Object.keys(CARDIO).map(c=>`<option ${c===(s.cardio||'ウォーキング')?'selected':''}>${c}</option>`).join('')}</select></div>`;row.dataset.day=d;const typeSel=row.querySelector('[data-k=type]'),wrap=row.querySelector('[data-cardio-wrap]');typeSel.onchange=()=>wrap.classList.toggle('show',typeSel.value==='有酸素');host.appendChild(row)})}
+function switchPlanMode(mode){scheduleDraftMode=mode;$('#modeWeekdayBtn').classList.toggle('active',mode==='weekday');$('#modeIntervalBtn').classList.toggle('active',mode==='interval');$('#weekdayPlanner').style.display=mode==='weekday'?'block':'none';$('#intervalPlanner').style.display=mode==='interval'?'block':'none';updateIntervalSummary()}
+function updateIntervalSummary(){if(!$('#intervalSummary'))return;const every=Number($('#intervalEvery').value)||2,start=$('#intervalStart').value||ymd(),time=$('#intervalTime').value||'19:30',mins=Number($('#intervalMinutes').value)||30,type=$('#intervalType').value||'自宅筋トレ';$('#intervalSummary').textContent=`${start}から${every===1?'毎日':(every-1)+'日おき'}・${time}・${mins}分・${type}。曜日に関係なく、この間隔でトレーニング日になります。`}
 function openSchedule(){
- const host=$('#scheduleEditor');host.innerHTML='';
- [1,2,3,4,5,6,0].forEach(d=>{
-  const s=state.schedule[d];const row=document.createElement('div');row.className='schedule-line';
-  row.innerHTML=`<div class="dow">${DOW[d]}</div><input type="checkbox" ${s.on?'checked':''} data-k="on"><select data-k="type">${Object.keys(TYPES).map(t=>`<option ${t===s.type?'selected':''}>${t}</option>`).join('')}</select><input type="time" value="${s.time}" data-k="time"><input type="number" min="10" max="180" step="5" value="${s.minutes}" data-k="minutes"><div class="cardio-sub ${s.type==='有酸素'?'show':''}" data-cardio-wrap><span>有酸素の種目</span><select data-k="cardio">${Object.keys(CARDIO).map(c=>`<option ${c===(s.cardio||'ウォーキング')?'selected':''}>${c}</option>`).join('')}</select></div>`;
-  row.dataset.day=d;const typeSel=row.querySelector('[data-k=type]'),wrap=row.querySelector('[data-cardio-wrap]');typeSel.onchange=()=>wrap.classList.toggle('show',typeSel.value==='有酸素');host.appendChild(row)
- });$('#scheduleModal').classList.add('open')
+ scheduleDraftMode=state.planMode||'weekday';bulkSelected=new Set([1,3,5]);renderBulkDayPicks();renderScheduleRows();
+ fillOptions($('#bulkType'),Object.keys(TYPES),'自宅筋トレ');fillOptions($('#bulkCardio'),Object.keys(CARDIO),'ウォーキング');
+ const p=state.intervalPlan||{};fillOptions($('#intervalType'),Object.keys(TYPES),p.type||'自宅筋トレ');fillOptions($('#intervalCardio'),Object.keys(CARDIO),p.cardio||'ウォーキング');
+ $('#intervalEvery').value=String(p.every||2);$('#intervalStart').value=p.startDate||ymd();$('#intervalTime').value=p.time||'19:30';$('#intervalMinutes').value=p.minutes||30;
+ $('#bulkType').onchange=()=>$('#bulkCardioWrap').style.display=$('#bulkType').value==='有酸素'?'block':'none';$('#intervalType').onchange=()=>{$('#intervalCardioWrap').style.display=$('#intervalType').value==='有酸素'?'block':'none';updateIntervalSummary()};
+ $('#bulkCardioWrap').style.display=$('#bulkType').value==='有酸素'?'block':'none';$('#intervalCardioWrap').style.display=$('#intervalType').value==='有酸素'?'block':'none';
+ $$('#intervalPlanner input,#intervalPlanner select').forEach(el=>el.onchange=updateIntervalSummary);
+ switchPlanMode(scheduleDraftMode);$('#scheduleModal').classList.add('open')
 }
-$('#editScheduleBtn').onclick=openSchedule;$('#closeScheduleBtn').onclick=()=>$('#scheduleModal').classList.remove('open');$('#saveScheduleBtn').onclick=()=>{$$('#scheduleEditor .schedule-line').forEach(r=>{const d=r.dataset.day;const type=r.querySelector('[data-k=type]').value;state.schedule[d]={on:r.querySelector('[data-k=on]').checked,type,time:r.querySelector('[data-k=time]').value,minutes:Number(r.querySelector('[data-k=minutes]').value)||20,...(type==='有酸素'?{cardio:r.querySelector('[data-k=cardio]').value}:{})}});save();$('#scheduleModal').classList.remove('open');render();toast('1週間の予定を保存しました')};
+$('#modeWeekdayBtn').onclick=()=>switchPlanMode('weekday');$('#modeIntervalBtn').onclick=()=>switchPlanMode('interval');
+$$('[data-preset]').forEach(b=>b.onclick=()=>{const map={weekdays:[1,2,3,4,5],mwf:[1,3,5],tt:[2,4],weekend:[6,0],all:[1,2,3,4,5,6,0]};bulkSelected=new Set(map[b.dataset.preset]||[]);renderBulkDayPicks()});
+$('#bulkApplyBtn').onclick=()=>{if(!bulkSelected.size){toast('曜日を選んでね');return}const type=$('#bulkType').value,time=$('#bulkTime').value,minutes=Number($('#bulkMinutes').value)||30,cardio=$('#bulkCardio').value;bulkSelected.forEach(d=>{const r=$(`#scheduleEditor .schedule-line[data-day=\"${d}\"]`);if(!r)return;r.querySelector('[data-k=on]').checked=true;r.querySelector('[data-k=type]').value=type;r.querySelector('[data-k=time]').value=time;r.querySelector('[data-k=minutes]').value=minutes;const wrap=r.querySelector('[data-cardio-wrap]');wrap.classList.toggle('show',type==='有酸素');if(type==='有酸素')r.querySelector('[data-k=cardio]').value=cardio});toast(`${bulkSelected.size}曜日にまとめて反映したよ`)};
+$('#advancedToggleBtn').onclick=()=>{const w=$('#advancedWrap');w.classList.toggle('open');$('#advancedToggleBtn').textContent=w.classList.contains('open')?'▴ 細かい設定を閉じる':'▾ 曜日ごとの細かい設定'};
+$('#editScheduleBtn').onclick=openSchedule;$('#closeScheduleBtn').onclick=()=>$('#scheduleModal').classList.remove('open');$('#saveScheduleBtn').onclick=()=>{state.planMode=scheduleDraftMode;if(scheduleDraftMode==='weekday'){$$('#scheduleEditor .schedule-line').forEach(r=>{const d=r.dataset.day;const type=r.querySelector('[data-k=type]').value;state.schedule[d]={on:r.querySelector('[data-k=on]').checked,type,time:r.querySelector('[data-k=time]').value,minutes:Number(r.querySelector('[data-k=minutes]').value)||20,...(type==='有酸素'?{cardio:r.querySelector('[data-k=cardio]').value}:{})}})}else{const type=$('#intervalType').value;state.intervalPlan={every:Number($('#intervalEvery').value)||2,startDate:$('#intervalStart').value||ymd(),time:$('#intervalTime').value||'19:30',minutes:Number($('#intervalMinutes').value)||30,type,...(type==='有酸素'?{cardio:$('#intervalCardio').value}:{})}}save();$('#scheduleModal').classList.remove('open');render();toast(scheduleDraftMode==='weekday'?'曜日プランを保存しました':'○日おきプランを保存しました')};
 async function enableNotifications(){if(!('Notification'in window)){toast('このブラウザは通知に未対応です');return}const p=await Notification.requestPermission();if(p==='granted'){await registerSW();toast('通知をONにしました');render()}else toast('通知が許可されませんでした')}
 async function registerSW(){if('serviceWorker'in navigator){try{return await navigator.serviceWorker.register('sw.js')}catch(e){console.warn(e)}}}
 async function showNotification(title,body){if(!('Notification'in window)||Notification.permission!=='granted')return;const reg=await navigator.serviceWorker?.ready;if(reg?.showNotification)reg.showNotification(title,{body,icon:'assets/icon-192.png',badge:'assets/icon-192.png',tag:'gajumaru-reminder'});else new Notification(title,{body})}
 $('#notifyBtn').onclick=enableNotifications;$('#testNotifyBtn').onclick=()=>showNotification('GAJUまる「そろそろだよ🌱」','今日は1つ○でOK！終わったらGAJUまるが育つよ。');
-function reminderTick(){if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date(),sc=state.schedule[now.getDay()];if(!sc?.on)return;const [h,m]=sc.time.split(':').map(Number),target=new Date(now);target.setHours(h,m,0,0);target.setMinutes(target.getMinutes()-state.lead);const key=ymd(now)+'-'+sc.time;if(Math.abs(now-target)<45000&&!state.notified[key]){showNotification('GAJUまる「そろそろだよ🌱」',`${sc.time}から${sc.minutes}分。今日は1つ○でOK！`);state.notified[key]=true;save()}}
+function reminderTick(){if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date(),sc=scheduleForDate(now);if(!sc?.on)return;const [h,m]=sc.time.split(':').map(Number),target=new Date(now);target.setHours(h,m,0,0);target.setMinutes(target.getMinutes()-state.lead);const key=ymd(now)+'-'+sc.time;if(Math.abs(now-target)<45000&&!state.notified[key]){showNotification('GAJUまる「そろそろだよ🌱」',`${sc.time}から${sc.minutes}分。今日は1つ○でOK！`);state.notified[key]=true;save()}}
 setInterval(reminderTick,30000);
 function setupRender(){
  const host=$('#setupStep');$$('.stepdots i').forEach((d,i)=>d.classList.toggle('on',i<=setupStep));
  if(setupStep===0)host.innerHTML=`<div class="eyebrow">WELCOME</div><h2>ふたりで、GAJUまるを育てよう。</h2><p>運動した日に○。ふたりは応援役、GAJUまるは頑張りに合わせて成長します。</p><div class="welcome-crew"><img class="couple" src="${COUPLE_ASSET}" alt="応援するふたり"><img class="buddy" src="${BASE_GAJU_ASSET}" alt="GAJUまる"></div><div class="field"><label>呼ばれたい名前</label><input id="sNick" placeholder="例：みほ"></div><button class="primary" id="sNext" style="margin-top:14px">はじめる</button>`;
  if(setupStep===1)host.innerHTML=`<div class="eyebrow">PROFILE</div><h2>ちょうどいいプランに。</h2><p>身長・体重・目的をもとに、筋トレと有酸素のバランスを調整します。</p><div class="mini-form"><div class="field"><label>身長 cm</label><input id="sHeight" type="number" value="${state.height}"></div><div class="field"><label>体重 kg</label><input id="sWeight" type="number" step="0.1" value="${state.weight}"></div><div class="field full"><label>目標</label><select id="sGoal"><option>健康維持</option><option selected>引き締め</option><option>筋力アップ</option><option>体力アップ</option></select></div></div><button class="primary" id="sNext" style="margin-top:14px">次へ</button>`;
- if(setupStep===2)host.innerHTML=`<div class="eyebrow">REMINDER</div><h2>曜日・時間を決めたら完成。</h2><p>最初は仮プランを入れてあります。あとからいつでも変更できます。通知は20分前がおすすめ。</p><div class="warning"><strong>おすすめ</strong><br>週3回くらいの筋トレ＋有酸素1〜2回を目安に。忙しい日は自宅10分でも○！</div><button class="primary" id="sFinish" style="margin-top:14px">GAJUまるをスタート</button><button class="secondary" id="sEdit" style="width:100%;margin-top:8px">先に曜日を編集する</button>`;
+ if(setupStep===2)host.innerHTML=`<div class="eyebrow">REMINDER</div><h2>続け方を決めたら完成。</h2><p>曜日まとめ設定か「○日おき」を選べます。最初は仮プラン入りなので、あとから変えてもOK。通知は20分前がおすすめ。</p><div class="warning"><strong>おすすめ</strong><br>週3回くらいの筋トレ＋有酸素1〜2回を目安に。忙しい日は自宅10分でも○！</div><button class="primary" id="sFinish" style="margin-top:14px">GAJUまるをスタート</button><button class="secondary" id="sEdit" style="width:100%;margin-top:8px">先にプランを編集する</button>`;
  if(setupStep===0)$('#sNext').onclick=()=>{state.nickname=$('#sNick').value.trim();setupStep++;setupRender()};
  if(setupStep===1)$('#sNext').onclick=()=>{state.height=Number($('#sHeight').value)||160;state.weight=Number($('#sWeight').value)||55;state.goal=$('#sGoal').value;setupStep++;setupRender()};
  if(setupStep===2){$('#sFinish').onclick=()=>{state.setup=true;save();$('#setupModal').classList.remove('open');render();toast('GAJUまる、スタート！')};$('#sEdit').onclick=()=>openSchedule()}
