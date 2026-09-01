@@ -97,7 +97,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,480px
 .ai-quick-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.ai-quick{border:1px solid #9ec48d;background:#fff;color:var(--green);border-radius:13px;padding:10px 5px;font-weight:900;font-size:12px}.ai-quick:active{transform:scale(.97)}.support-card{cursor:default}.support-try{width:100%;margin-top:9px;border:0;border-radius:11px;background:var(--green);color:#fff;padding:9px 6px;font-size:11px;font-weight:900}.support-try:active{transform:scale(.97)}
 </style></head><body>
 <div class="app">
-<header class="topbar"><div class="brandline"><div class="brand">GAJUまる<small>○をつけると、育つ。 v10</small></div><div class="streak" id="streakChip">🔥 0日</div></div></header>
+<header class="topbar"><div class="brandline"><div class="brand">GAJUまる<small>○をつけると、育つ。 v11</small></div><div class="streak" id="streakChip">🔥 0日</div></div></header>
 <main>
 <section class="page active" data-page="today"><div class="eyebrow">TODAY</div><h1 class="title" id="helloTitle">今日も○をつけよう。</h1><p class="subtitle">筋トレ・有酸素・休養のバランスを見ながら、GAJUまるをふたりで育てていく。</p><div class="card hero"><div class="hero-head"><div class="hero-copy"><span class="pill">🌱 GAJUまる Lv.<span id="levelNumInline">1</span></span><h2 id="gajuMessage">今日はここから。小さな○でも育つよ。</h2><p>毎日の積み重ねで、葉っぱも表情も少しずつ変わる。がんばり過ぎないのがコツ。</p><div class="hero-meter"><span class="level" id="levelPill">Lv.1 はじめの芽</span><div class="meter"><i id="growthBar" style="width:0%"></i></div><span class="level" id="nextText">次まで 3○</span></div></div><div class="gaju-wrap" id="gajuWrap"><img class="gaju-img" id="gajuImage" alt="GAJUまる"><span class="bug b1">🐛</span><span class="bug b2">🪲</span><span class="bug b3">🐜</span><span class="leaf-hole hole1"></span><span class="leaf-hole hole2"></span><span class="leaf-hole hole3"></span></div></div><div class="warning" style="margin-top:12px"><strong id="damageTitle">さぼっても大丈夫。</strong><br><span id="damageText">続けると元気に戻るよ。</span></div></div><div class="card companion-card"><div class="companion-copy"><span class="pill timepill" id="reminderPill">🔔 20分前</span><strong id="companionTitle">今日は筋トレの日</strong><p id="companionText">短くても1つ○をつければOK。ふたりが応援、GAJUまるが成長。</p><button class="primary start-workout" id="startWorkoutBtn">トレーニング開始</button></div><div class="companion-scene"><img class="couple" id="coupleToday" alt="応援するふたり"><img class="buddy" id="gajuBuddy" alt="小さなGAJUまる"></div></div><div class="card ai-card"><div class="ai-card-head"><div class="ai-badge">AI</div><div class="ai-card-copy"><b>AIフォームチェック β</b><span>家トレ3種目に対応</span></div></div><p>カメラで姿勢を見て、回数カウントと簡単なフォーム判定をサポート。試したい種目を選んでください。</p><div class="ai-quick-row"><button type="button" class="ai-quick" data-ai-exercise="pushup" onclick="return startAiDemo(event,'pushup')">腕立て</button><button type="button" class="ai-quick" data-ai-exercise="squat" onclick="return startAiDemo(event,'squat')">スクワット</button><button type="button" class="ai-quick" data-ai-exercise="plank" onclick="return startAiDemo(event,'plank')">プランク</button></div></div><div class="section-title"><h3>AIフォームチェック対応種目</h3><span>それぞれ「試す」から開始</span></div><div class="support-grid"><div class="support-card"><img src="asset-ai-workout.png" alt="腕立て伏せのAI画面"><div class="support-copy"><b>腕立て伏せ</b><span>回数カウント</span><button type="button" class="support-try" data-ai-exercise="pushup" onclick="return startAiDemo(event,'pushup')">腕立てを試す</button></div></div><div class="support-card"><img src="asset-ai-tracker.png" alt="フォームチェック画面"><div class="support-copy"><b>スクワット</b><span>回数＋深さ判定</span><button type="button" class="support-try" data-ai-exercise="squat" onclick="return startAiDemo(event,'squat')">スクワットを試す</button></div></div><div class="support-card"><img src="asset-ai-pushup-guide.png" alt="プランクのAI画面"><div class="support-copy"><b>プランク</b><span>正しい姿勢の秒数</span><button type="button" class="support-try" data-ai-exercise="plank" onclick="return startAiDemo(event,'plank')">プランクを試す</button></div></div></div><div class="section-title"><h3>主な機能</h3><span>習慣化しやすい設計</span></div><div class="feature-grid"><div class="feature-item"><div class="feature-icon">📅</div><div><b>週間プラン</b><span>曜日ごとにジム・自宅・有酸素を設定。</span></div></div><div class="feature-item"><div class="feature-icon">📈</div><div><b>記録とグラフ</b><span>体重やトレーニング回数を見える化。</span></div></div><div class="feature-item"><div class="feature-icon">🔔</div><div><b>リマインド</b><span>「あと20分だけ」の後押し通知。</span></div></div><div class="feature-item"><div class="feature-icon">🚴</div><div><b>有酸素にロードバイク</b><span>GAJUまるらしい楽しさも忘れない。</span></div></div></div><div class="section-title"><h3>今週の○</h3><span>できた日に○が増える</span></div><div class="card"><div class="record-flex"><div class="progress-ring" id="weekRing" style="--p:0%"><b id="weekScore">0/0</b></div><div><b id="weekComment">今週はここから。</b><p class="note" id="weekSub">筋トレ・有酸素・休養をバランスよく。</p></div></div></div></section>
 
@@ -305,6 +305,7 @@ $('#startWorkoutBtn').onclick=openWorkout;$('#closeWorkoutBtn').onclick=closeWor
 // --- AI pose check beta: push-up counter ---
 let poseLandmarker=null,posePkg=null,poseStream=null,poseRaf=null,poseActive=false,poseLastVideoTime=-1,poseLastInfer=0;
 let poseCount=0,poseGoal=10,posePhase='wait',poseLastRepAt=0,poseFacing='user',poseSource='demo',poseGoalReached=false,poseExercise='pushup',poseGoodMs=0,poseLastProcessAt=0;
+let pushupUpRef=NaN,pushupSmoothAngle=NaN,pushupMinAngle=180,pushupSeenTop=false;
 const POSE_CONNECTIONS=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[23,25],[25,27],[24,26],[26,28]];
 
 function angle3(a,b,c){
@@ -333,9 +334,9 @@ function setPoseFeedback(text,icon='✨'){
  const ic=$('#poseFeedbackIcon');if(ic)ic.textContent=icon;
 }
 function exerciseFromName(name=''){if(/スクワット/.test(name))return 'squat';if(/プランク/.test(name))return 'plank';return 'pushup'}
-function poseConfig(ex=poseExercise){return ex==='squat'?{title:'スクワット',goal:10,unit:'回',m1:'しゃがみ深さ',m2:'上体バランス',hint:'スマホは縦のまま。肩・腰・膝が映ればOK。足首は映らなくても大丈夫です'}:ex==='plank'?{title:'プランク',goal:30,unit:'秒',m1:'体の角度',m2:'キープ時間',hint:'スマホは縦のまま、正面〜斜め前から肩・腰・膝が入るように置いてください'}:{title:'腕立て伏せ',goal:10,unit:'回',m1:'肘の角度',m2:'体のライン',hint:'スマホは縦のまま、正面〜少し斜め前から上半身〜膝まで入れてください'}}
+function poseConfig(ex=poseExercise){return ex==='squat'?{title:'スクワット',goal:10,unit:'回',m1:'しゃがみ深さ',m2:'上体バランス',hint:'スマホは縦のまま。肩・腰・膝が映ればOK。足首は映らなくても大丈夫です'}:ex==='plank'?{title:'プランク',goal:30,unit:'秒',m1:'体の角度',m2:'キープ時間',hint:'スマホは縦のまま、正面〜斜め前から肩・腰・膝が入るように置いてください'}:{title:'腕立て伏せ',goal:10,unit:'回',m1:'肘の角度',m2:'体のライン',hint:'スマホは縦のままでOK。正面〜少し斜め前から、肩・肘・手首・腰が映るように置いてください。膝は必須ではありません'}}
 function resetPoseCounter(){
- poseCount=0;posePhase='wait';poseLastRepAt=0;poseGoalReached=false;poseGoodMs=0;poseLastProcessAt=0;
+ poseCount=0;posePhase='wait';poseLastRepAt=0;poseGoalReached=false;poseGoodMs=0;poseLastProcessAt=0;pushupUpRef=NaN;pushupSmoothAngle=NaN;pushupMinAngle=180;pushupSeenTop=false;
  $('#poseCount').textContent='0';$('#posePhase').textContent='WAIT';$('#poseApplyBtn').disabled=true;
  $('#poseElbow').textContent='--°';$('#poseBody').textContent='--°';const c=poseConfig();
  $('#poseMetric1Label').textContent=c.m1;$('#poseMetric2Label').textContent=c.m2;setPoseFeedback(c.hint,'📷');
@@ -370,12 +371,12 @@ async function ensurePoseLandmarker(){
  posePkg=await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/vision_bundle.mjs');
  const vision=await posePkg.FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm');
  poseLandmarker=await posePkg.PoseLandmarker.createFromOptions(vision,{
-  baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task'},
+  baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task'},
   runningMode:'VIDEO',
   numPoses:1,
-  minPoseDetectionConfidence:.55,
-  minPosePresenceConfidence:.55,
-  minTrackingConfidence:.55
+  minPoseDetectionConfidence:.45,
+  minPosePresenceConfidence:.45,
+  minTrackingConfidence:.45
  });
  return poseLandmarker;
 }
@@ -429,62 +430,96 @@ function drawPose(lms){
  });
 }
 function processPushup(lms,world){
- const leftIds=[11,13,15,23,25],rightIds=[12,14,16,24,26];
- const leftScore=sideScore(lms,leftIds),rightScore=sideScore(lms,rightIds);
- const l=[11,13,15,23,25].map(i=>lms[i]),r=[12,14,16,24,26].map(i=>lms[i]);
- const lw=world?[11,13,15,23,25].map(i=>world[i]):null,rw=world?[12,14,16,24,26].map(i=>world[i]):null;
-
- // 3D world landmarks let us judge elbow flexion even when the phone stays portrait
- // and the person is facing the camera or standing at a slight diagonal.
- let leftElbow=lw?angle3D(lw[0],lw[1],lw[2]):angle3(l[0],l[1],l[2]);
- let rightElbow=rw?angle3D(rw[0],rw[1],rw[2]):angle3(r[0],r[1],r[2]);
- const elbowCandidates=[];
- if(leftScore>.42&&Number.isFinite(leftElbow))elbowCandidates.push({v:leftElbow,w:leftScore});
- if(rightScore>.42&&Number.isFinite(rightElbow))elbowCandidates.push({v:rightElbow,w:rightScore});
- if(!elbowCandidates.length){
+ // v11: 正面・縦スマホでも拾いやすい適応型カウント。
+ // 片腕が隠れても、見えている側の2D/3D角度から最も「曲がり」を拾う。
+ const sides=[
+  {ids:[11,13,15,23,25]},
+  {ids:[12,14,16,24,26]}
+ ];
+ const candidates=[];
+ sides.forEach(side=>{
+  const [s,e,w,h,k]=side.ids.map(i=>lms[i]);
+  const vis=Math.min(lmVis(s),lmVis(e),lmVis(w));
+  if(vis<.25)return;
+  const a2=angle3(s,e,w);
+  const a3=world?angle3D(world[side.ids[0]],world[side.ids[1]],world[side.ids[2]]):NaN;
+  // 正面では3D、斜めでは2Dが安定することがあるので両方を候補にする。
+  if(Number.isFinite(a2)&&a2>35&&a2<179)candidates.push({v:a2,w:vis*.9});
+  if(Number.isFinite(a3)&&a3>35&&a3<179)candidates.push({v:a3,w:vis});
+ });
+ if(!candidates.length){
   $('#posePhase').textContent='WAIT';
-  setPoseFeedback('肩・肘・手首が見える位置にスマホを置いてね','📷');return;
+  setPoseFeedback('肩・肘・手首が見える位置にしてね。膝は映らなくてもOK','📷');return;
  }
- const elbow=elbowCandidates.reduce((s,x)=>s+x.v*x.w,0)/elbowCandidates.reduce((s,x)=>s+x.w,0);
+ // 曲げた側を平均で打ち消さないよう、低い角度側を優先。
+ candidates.sort((a,b)=>a.v-b.v);
+ const rawElbow=candidates.length>=2?(candidates[0].v*.72+candidates[1].v*.28):candidates[0].v;
+ pushupSmoothAngle=Number.isFinite(pushupSmoothAngle)?pushupSmoothAngle*.58+rawElbow*.42:rawElbow;
+ const elbow=pushupSmoothAngle;
+ pushupMinAngle=Math.min(pushupMinAngle,elbow);
 
- const enoughBody=Math.max(lmVis(lms[23]),lmVis(lms[24]))>.35&&Math.max(lmVis(lms[25]),lmVis(lms[26]))>.30;
+ // 伸ばした姿勢をその人の基準角度として自動学習。
+ if(elbow>125){
+  if(!Number.isFinite(pushupUpRef))pushupUpRef=elbow;
+  else pushupUpRef=Math.max(pushupUpRef*.995,elbow);
+ }
+ if(Number.isFinite(pushupUpRef)&&pushupUpRef>135)pushupSeenTop=true;
+
+ const shoulderOk=Math.max(lmVis(lms[11]),lmVis(lms[12]))>.28;
+ const hipOk=Math.max(lmVis(lms[23]),lmVis(lms[24]))>.24;
+ const kneeOk=Math.max(lmVis(lms[25]),lmVis(lms[26]))>.20;
  let body=NaN;
- if(world&&enoughBody){
-  const shoulder=mid3(world[11],world[12]),hip=mid3(world[23],world[24]),knee=mid3(world[25],world[26]);
-  body=angle3D(shoulder,hip,knee);
- }else{
-  const useLeft=leftScore>=rightScore;
-  const arr=useLeft?l:r;
-  body=angle3(arr[0],arr[3],arr[4]);
+ if(shoulderOk&&hipOk&&kneeOk){
+  if(world){body=angle3D(mid3(world[11],world[12]),mid3(world[23],world[24]),mid3(world[25],world[26]));}
+  else{
+   const useLeft=sideScore(lms,[11,23,25])>=sideScore(lms,[12,24,26]);
+   body=useLeft?angle3(lms[11],lms[23],lms[25]):angle3(lms[12],lms[24],lms[26]);
+  }
  }
-
  $('#poseElbow').textContent=Number.isFinite(elbow)?Math.round(elbow)+'°':'--°';
- $('#poseBody').textContent=Number.isFinite(body)?Math.round(body)+'°':'--°';
+ $('#poseBody').textContent=Number.isFinite(body)?Math.round(body)+'°':(hipOk?'OK':'--°');
 
- if(!enoughBody){
+ if(!shoulderOk||!hipOk){
   $('#posePhase').textContent='WAIT';
-  setPoseFeedback('上半身と腰・膝まで入るように少し離れてね','📷');return;
- }
- if(Number.isFinite(body)&&body<142){
-  $('#posePhase').textContent='FORM';
-  setPoseFeedback('腰が折れているかも。頭〜膝を一直線に','🌱');return;
+  setPoseFeedback('肩〜腰まで入るように少し離れてね。足先・膝は必須じゃないよ','📷');return;
  }
 
+ // 固定角度だけでなく「自分の伸ばした角度から何度曲がったか」で判定。
+ const upRef=Number.isFinite(pushupUpRef)?pushupUpRef:155;
+ const downThreshold=Math.max(108,Math.min(132,upRef-18));
+ const upThreshold=Math.max(136,Math.min(158,upRef-6));
+ const drop=upRef-elbow;
  const now=performance.now();
- if(elbow<105){
-  if(posePhase==='up'||posePhase==='wait'||posePhase==='move')posePhase='down';
+
+ if(!pushupSeenTop&&elbow<132){
+  $('#posePhase').textContent='READY';
+  setPoseFeedback('まず腕を伸ばした姿勢を1秒見せてね','⬆️');
+  return;
+ }
+
+ const isDown=elbow<=downThreshold||drop>=20;
+ const isUp=elbow>=upThreshold||drop<=7;
+
+ if(isDown){
+  if(posePhase==='up'||posePhase==='wait'||posePhase==='move'||posePhase==='ready')posePhase='down';
   $('#posePhase').textContent='DOWN';
-  setPoseFeedback('いい深さ！ そのまま押し上げよう','⬇️');
- }else if(elbow>150){
-  if(posePhase==='down'&&now-poseLastRepAt>500){
+  setPoseFeedback('DOWNを認識！ そのまま押し上げよう','⬇️');
+ }else if(isUp){
+  if(posePhase==='down'&&now-poseLastRepAt>450){
    poseCount++;poseLastRepAt=now;$('#poseCount').textContent=poseCount;
    if(navigator.vibrate)navigator.vibrate(35);
   }
   posePhase='up';$('#posePhase').textContent='UP';
-  setPoseFeedback(poseCount?`${poseCount}回！ 正面からでも見えてるよ🌱`:'その姿勢からスタート！','⬆️');
+  setPoseFeedback(poseCount?`${poseCount}回！ カウントできた🌱`:'UPを認識。ここから下げてね','⬆️');
  }else{
-  posePhase='move';$('#posePhase').textContent='MOVE';
-  setPoseFeedback('そのままゆっくり上下してね','✨');
+  posePhase=posePhase==='down'?'down':'move';$('#posePhase').textContent='MOVE';
+  const need=Math.max(0,Math.round(elbow-downThreshold));
+  setPoseFeedback(need>0?`あと少しだけ肘を曲げてみて（目安 ${Math.round(downThreshold)}°）`:'そのままゆっくり上下してね','✨');
+ }
+
+ // 腰のラインはカウント停止条件にせず、取れたときだけ助言にする。
+ if(Number.isFinite(body)&&body<128&&posePhase!=='down'){
+  setPoseFeedback('カウントはできてるよ。腰だけ少しまっすぐ意識するとさらに◎','🌱');
  }
  if(poseCount>=poseGoal){
   $('#poseApplyBtn').disabled=false;
@@ -495,7 +530,6 @@ function processPushup(lms,world){
   }
  }
 }
-
 function processSquat(lms,world){
  // v9: 足首は必須にしない。肩・腰・膝の3点と腰の上下動で判定する。
  const shoulderOk=Math.max(lmVis(lms[11]),lmVis(lms[12]))>.35;
